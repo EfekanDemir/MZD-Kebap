@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make a Reservation - Sultan's Feast</title>
-    <meta name="description" content="Reserve your table at Sultan's Feast. Book online for an unforgettable Turkish dining experience with authentic flavors and contemporary elegance.">
+    <title data-tr="reservationPageTitle" data-en="reservationPageTitle">Rezervasyon Yap - Sultan's Feast</title>
+    <meta name="description" data-tr="reservationPageDescription" data-en="reservationPageDescription" content="Sultan's Feast'te masanızı ayırtın. Unutulmaz Türk yemek deneyimi için otantik lezzetler ve çağdaş zarafet ile online rezervasyon yapın.">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,6 +16,9 @@
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- App.js for language management -->
+    <script src="app.js"></script>
     
     <style>
         body {
@@ -279,9 +282,9 @@
                 <a href="contact.html" class="text-2xl text-white hover-gold font-medium transition-colors">Contact</a>
                 <a href="reservation.html" class="text-2xl text-gold font-medium transition-colors">Reservation</a>
                 <div class="flex items-center space-x-4 text-lg">
-                    <span class="text-gold cursor-pointer hover:text-yellow-300">TR</span>
+                    <span id="tr-btn" class="text-gold cursor-pointer hover:text-yellow-300 transition-colors" onclick="setLanguage('tr')">TR</span>
                     <span class="text-gray-400">/</span>
-                    <span class="text-white cursor-pointer hover:text-gray-300">EN</span>
+                    <span id="en-btn" class="text-white cursor-pointer hover:text-gray-300 transition-colors" onclick="setLanguage('en')">EN</span>
                 </div>
             </div>
         </div>
@@ -293,12 +296,11 @@
             <div class="max-w-2xl w-full">
                 <!-- Header -->
                 <div class="text-center mb-8 fade-in">
-                    <h1 class="text-4xl sm:text-5xl font-bold mb-4">
-                        Reserve Your <span class="text-gold">Table</span>
+                    <h1 class="text-4xl sm:text-5xl font-bold mb-4" data-tr="reserveYourTable" data-en="reserveYourTable">
+                        Masa <span class="text-gold">Rezervasyonu</span>
                     </h1>
-                    <p class="text-lg text-gray-300 max-w-xl mx-auto">
-                        Experience the finest Turkish cuisine in an atmosphere of contemporary elegance. 
-                        Book your table for an unforgettable dining journey.
+                    <p class="text-lg text-gray-300 max-w-xl mx-auto" data-tr="bookYourTable" data-en="bookYourTable">
+                        Unutulmaz bir yemek yolculuğu için masanızı ayırtın.
                     </p>
                 </div>
                 
@@ -307,11 +309,11 @@
                     <div class="flex space-x-4">
                         <div class="step-indicator active px-4 py-2 rounded-full text-sm font-medium">
                             <i class="fas fa-calendar-alt mr-2"></i>
-                            Book Table
+                            <span data-tr="bookTable" data-en="bookTable">Masa Ayırt</span>
                         </div>
                         <div class="step-indicator px-4 py-2 rounded-full text-sm font-medium">
                             <i class="fas fa-check-circle mr-2"></i>
-                            Confirmation
+                            <span data-tr="reservationSuccess" data-en="reservationSuccess">Rezervasyon Başarılı!</span>
                         </div>
                     </div>
                 </div>
@@ -323,7 +325,7 @@
                         <div>
                             <label class="block text-gold font-semibold mb-3">
                                 <i class="fas fa-users mr-2"></i>
-                                Number of Guests *
+                                <span data-tr="numberOfGuests" data-en="numberOfGuests">Kişi Sayısı</span> *
                             </label>
                             <div class="guest-selector">
                                 <div class="guest-option" data-guests="1">1</div>
@@ -340,7 +342,7 @@
                             <input type="hidden" id="guests" name="guests" required>
                             <div class="error-message" id="guests-error">
                                 <i class="fas fa-exclamation-circle"></i>
-                                <span>Please select the number of guests</span>
+                                <span data-tr="pleaseSelectGuests" data-en="pleaseSelectGuests">Lütfen kişi sayısını seçin</span>
                             </div>
                         </div>
                         
@@ -348,7 +350,7 @@
                         <div>
                             <label for="date" class="block text-gold font-semibold mb-3">
                                 <i class="fas fa-calendar mr-2"></i>
-                                Preferred Date *
+                                <span data-tr="preferredDate" data-en="preferredDate">Tercih Edilen Tarih</span> *
                             </label>
                             <input type="date" 
                                    id="date" 
@@ -357,7 +359,7 @@
                                    required>
                             <div class="error-message" id="date-error">
                                 <i class="fas fa-exclamation-circle"></i>
-                                <span>Please select a future date</span>
+                                <span data-tr="pleaseSelectFutureDate" data-en="pleaseSelectFutureDate">Lütfen gelecek bir tarih seçin</span>
                             </div>
                         </div>
                         
@@ -365,7 +367,7 @@
                         <div>
                             <label class="block text-gold font-semibold mb-3">
                                 <i class="fas fa-clock mr-2"></i>
-                                Preferred Time *
+                                <span data-tr="preferredTime" data-en="preferredTime">Tercih Edilen Saat</span> *
                             </label>
                             <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
                                 <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="17:30">5:30 PM</div>
@@ -382,7 +384,7 @@
                             <input type="hidden" id="time" name="time" required>
                             <div class="error-message" id="time-error">
                                 <i class="fas fa-exclamation-circle"></i>
-                                <span>Please select a preferred time</span>
+                                <span data-tr="pleaseSelectTime" data-en="pleaseSelectTime">Lütfen bir saat seçin</span>
                             </div>
                         </div>
                         
@@ -394,15 +396,15 @@
                                        id="fullName" 
                                        name="fullName" 
                                        class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent peer" 
-                                       placeholder="Full Name"
+                                       placeholder="Ad Soyad"
                                        required>
                                 <label for="fullName" class="floating-label absolute left-4 top-3 text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-gold peer-focus:text-sm">
                                     <i class="fas fa-user mr-1"></i>
-                                    Full Name *
+                                    <span data-tr="fullName" data-en="fullName">Ad Soyad</span> *
                                 </label>
                                 <div class="error-message" id="fullName-error">
                                     <i class="fas fa-exclamation-circle"></i>
-                                    <span>Please enter your full name</span>
+                                    <span data-tr="fullName" data-en="fullName">Lütfen adınızı ve soyadınızı girin</span>
                                 </div>
                             </div>
                             
@@ -412,15 +414,15 @@
                                        id="phone" 
                                        name="phone" 
                                        class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent peer" 
-                                       placeholder="Phone Number"
+                                       placeholder="Telefon Numarası"
                                        required>
                                 <label for="phone" class="floating-label absolute left-4 top-3 text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-gold peer-focus:text-sm">
                                     <i class="fas fa-phone mr-1"></i>
-                                    Phone Number *
+                                    <span data-tr="phoneNumber" data-en="phoneNumber">Telefon Numarası</span> *
                                 </label>
                                 <div class="error-message" id="phone-error">
                                     <i class="fas fa-exclamation-circle"></i>
-                                    <span>Please enter a valid phone number</span>
+                                    <span data-tr="pleaseEnterValidPhone" data-en="pleaseEnterValidPhone">Lütfen geçerli bir telefon numarası girin</span>
                                 </div>
                             </div>
                         </div>
@@ -431,15 +433,15 @@
                                    id="email" 
                                    name="email" 
                                    class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent peer" 
-                                   placeholder="Email Address"
+                                   placeholder="E-posta Adresi"
                                    required>
                             <label for="email" class="floating-label absolute left-4 top-3 text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-gold peer-focus:text-sm">
                                 <i class="fas fa-envelope mr-1"></i>
-                                Email Address *
+                                <span data-tr="emailAddress" data-en="emailAddress">E-posta Adresi</span> *
                             </label>
                             <div class="error-message" id="email-error">
                                 <i class="fas fa-exclamation-circle"></i>
-                                <span>Please enter a valid email address</span>
+                                <span data-tr="pleaseEnterValidEmail" data-en="pleaseEnterValidEmail">Lütfen geçerli bir e-posta adresi girin</span>
                             </div>
                         </div>
                         
@@ -449,14 +451,14 @@
                                       name="specialRequests" 
                                       rows="4" 
                                       class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent peer resize-none" 
-                                      placeholder="Special Requests"></textarea>
+                                      placeholder="Özel İstekler"></textarea>
                             <label for="specialRequests" class="floating-label absolute left-4 top-3 text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-gold peer-focus:text-sm">
                                 <i class="fas fa-comment mr-1"></i>
-                                Special Requests (Optional)
+                                <span data-tr="specialRequests" data-en="specialRequests">Özel İstekler</span> (İsteğe Bağlı)
                             </label>
                             <p class="text-gray-400 text-sm mt-2">
                                 <i class="fas fa-info-circle mr-1"></i>
-                                Birthday celebration, dietary restrictions, seating preferences, etc.
+                                <span data-tr="specialRequestsInfo" data-en="specialRequestsInfo">Doğum günü kutlaması, diyet kısıtlamaları, oturma tercihleri vb.</span>
                             </p>
                         </div>
                         
@@ -466,17 +468,17 @@
                                 class="btn-gold w-full text-gray-900 py-4 rounded-lg font-semibold text-lg flex items-center justify-center mt-8">
                             <span id="btn-text">
                                 <i class="fas fa-calendar-check mr-2"></i>
-                                Request Reservation
+                                <span data-tr="makeReservation" data-en="makeReservation">Rezervasyon Yap</span>
                             </span>
                             <span id="btn-loading" class="hidden">
                                 <i class="fas fa-spinner loading-spinner mr-2"></i>
-                                Processing...
+                                <span data-tr="sending" data-en="sending">Gönderiliyor...</span>
                             </span>
                         </button>
                         
                         <p class="text-gray-400 text-sm text-center mt-4">
                             <i class="fas fa-shield-alt mr-1"></i>
-                            Your information is secure and will only be used for reservation purposes.
+                            <span data-tr="securityInfo" data-en="securityInfo">Bilgileriniz güvenlidir ve sadece rezervasyon amaçları için kullanılacaktır.</span>
                         </p>
                     </form>
                 </div>
@@ -487,32 +489,31 @@
                         <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-check text-3xl text-white"></i>
                         </div>
-                        <h2 class="text-3xl font-bold mb-4 text-green-400">
-                            Reservation Request Sent!
+                        <h2 class="text-3xl font-bold mb-4 text-green-400" data-tr="reservationSuccess" data-en="reservationSuccess">
+                            Rezervasyon Başarılı!
                         </h2>
-                        <p class="text-lg text-gray-300 mb-6 max-w-md mx-auto">
-                            Thank you for choosing Sultan's Feast! Your reservation request has been received. 
-                            We will contact you shortly to confirm your booking.
+                        <p class="text-lg text-gray-300 mb-6 max-w-md mx-auto" data-tr="successMessage" data-en="successMessage">
+                            Rezervasyonunuz başarıyla alındı. Kısa sürede size geri dönüş yapacağız.
                         </p>
                         
                         <!-- Reservation Summary -->
                         <div class="bg-gray-800 rounded-lg p-6 mb-6">
                             <h3 class="text-xl font-semibold mb-4 text-gold">
                                 <i class="fas fa-receipt mr-2"></i>
-                                Reservation Summary
+                                <span data-tr="reservationSummary" data-en="reservationSummary">Rezervasyon Özeti</span>
                             </h3>
                             <div class="grid grid-cols-2 gap-4 text-sm">
-                                <div class="text-gray-400">Guests:</div>
+                                <div class="text-gray-400" data-tr="guests" data-en="guests">Kişi:</div>
                                 <div class="text-white font-medium" id="summary-guests"></div>
-                                <div class="text-gray-400">Date:</div>
+                                <div class="text-gray-400" data-tr="date" data-en="date">Tarih:</div>
                                 <div class="text-white font-medium" id="summary-date"></div>
-                                <div class="text-gray-400">Time:</div>
+                                <div class="text-gray-400" data-tr="time" data-en="time">Saat:</div>
                                 <div class="text-white font-medium" id="summary-time"></div>
-                                <div class="text-gray-400">Name:</div>
+                                <div class="text-gray-400" data-tr="name" data-en="name">İsim:</div>
                                 <div class="text-white font-medium" id="summary-name"></div>
-                                <div class="text-gray-400">Phone:</div>
+                                <div class="text-gray-400" data-tr="phone" data-en="phone">Telefon:</div>
                                 <div class="text-white font-medium" id="summary-phone"></div>
-                                <div class="text-gray-400">Email:</div>
+                                <div class="text-gray-400" data-tr="email" data-en="email">E-posta:</div>
                                 <div class="text-white font-medium" id="summary-email"></div>
                             </div>
                         </div>
@@ -521,12 +522,12 @@
                             <button onclick="makeAnotherReservation()" 
                                     class="btn-gold text-gray-900 px-6 py-3 rounded-full font-semibold inline-block">
                                 <i class="fas fa-plus mr-2"></i>
-                                Make Another Reservation
+                                <span data-tr="newReservation" data-en="newReservation">Yeni Rezervasyon</span>
                             </button>
                             <a href="menu.html" 
                                class="border-2 border-gold text-gold px-6 py-3 rounded-full font-semibold inline-block hover:bg-gold hover:text-gray-900 transition-all duration-300">
                                 <i class="fas fa-utensils mr-2"></i>
-                                View Our Menu
+                                <span data-tr="viewFullMenu" data-en="viewFullMenu">Menüyü Görüntüle</span>
                             </a>
                         </div>
                     </div>
@@ -542,9 +543,8 @@
                 <!-- Brand -->
                 <div class="lg:col-span-1">
                     <h3 class="text-2xl font-bold text-gold mb-4">Sultan's Feast</h3>
-                    <p class="text-gray-300 mb-6">
-                        Where traditional Turkish cuisine meets modern elegance. 
-                        Experience the authentic flavors that have been passed down through generations.
+                    <p class="text-gray-300 mb-6" data-tr="traditionalMeetsModern" data-en="traditionalMeetsModern">
+                        Geleneksel Türk mutfağının modern zarafetle buluştuğu yer.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-gold transition-colors">
@@ -1007,6 +1007,14 @@
             initializeReservationForm();
             initializeRealTimeValidation();
             setMinimumDate();
+        });
+
+        // Initialize language system when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language manager
+            if (window.languageManager) {
+                window.languageManager.init();
+            }
         });
     </script>
 </body>
