@@ -1,0 +1,158 @@
+/* Modern Color Palette for MZD Kebap */
+:root {
+    --primary-amber: #F59E0B;
+    --primary-amber-light: #FCD34D;
+    --primary-amber-dark: #D97706;
+    --accent-orange: #EA580C;
+    --accent-orange-light: #FB923C;
+    --background-dark: #0F172A;
+    --background-medium: #1E293B;
+    --background-light: #334155;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --border-color: #475569;
+    --border-light: #64748B;
+}
+
+/* Modern Gold/Amber Color Classes */
+.text-gold {
+    color: var(--primary-amber) !important;
+}
+
+.border-gold {
+    border-color: var(--primary-amber) !important;
+}
+
+.bg-gold {
+    background-color: var(--primary-amber) !important;
+}
+
+.hover-gold:hover {
+    color: var(--primary-amber-light) !important;
+}
+
+/* Modern Button Styles */
+.btn-gold {
+    background: linear-gradient(135deg, var(--primary-amber), var(--accent-orange)) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.2) !important;
+}
+
+.btn-gold:hover {
+    background: linear-gradient(135deg, var(--accent-orange), var(--primary-amber)) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4) !important;
+}
+
+/* Modern Background Colors */
+.bg-dark {
+    background-color: var(--background-dark) !important;
+}
+
+.bg-medium {
+    background-color: var(--background-medium) !important;
+}
+
+.bg-light {
+    background-color: var(--background-light) !important;
+}
+
+/* Text Colors */
+.text-primary {
+    color: var(--text-primary) !important;
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Border Colors */
+.border-modern {
+    border-color: var(--border-color) !important;
+}
+
+.border-light {
+    border-color: var(--border-light) !important;
+}
+
+/* Modern Card Styles */
+.modern-card {
+    background-color: var(--background-medium);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.modern-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-amber);
+}
+
+/* Timeline Styles */
+.timeline-item::before {
+    background: var(--primary-amber) !important;
+    border: 3px solid var(--background-medium) !important;
+}
+
+.timeline-item::after {
+    background: var(--primary-amber) !important;
+}
+
+/* Stats Card Modern Style */
+.stats-card {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(234, 88, 12, 0.05)) !important;
+    border: 1px solid rgba(245, 158, 11, 0.2) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Modern Navigation */
+.nav-blur {
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* Modern Mobile Menu */
+.mobile-menu-modern {
+    background: linear-gradient(135deg, var(--background-dark), var(--background-medium));
+}
+
+/* Modern Gallery Images */
+.gallery-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(245, 158, 11, 0.3);
+}
+
+/* Modern Form Elements */
+.modern-input {
+    background-color: var(--background-medium);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.modern-input:focus {
+    border-color: var(--primary-amber);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+    outline: none;
+}
+
+/* Modern Quote Style */
+.quote-style::before {
+    color: var(--primary-amber) !important;
+}
+
+/* Responsive Modern Adjustments */
+@media (max-width: 768px) {
+    .btn-gold {
+        box-shadow: 0 2px 8px 0 rgba(245, 158, 11, 0.2) !important;
+    }
+    
+    .btn-gold:hover {
+        box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3) !important;
+    }
+}
