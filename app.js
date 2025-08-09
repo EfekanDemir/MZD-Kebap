@@ -3,11 +3,186 @@
  * Handles language switching, localStorage persistence, and dynamic content translation
  */
 
+/**
+ * Translation Library - All translations stored here
+ */
+const translations = {
+    tr: {
+        // Navigation
+        homepage: "Ana Sayfa",
+        menu: "Menü",
+        ourStory: "Hikayemiz",
+        locations: "Konumlar",
+        contact: "İletişim",
+        reservation: "Rezervasyon",
+        
+        // Hero Section
+        heroTitle: "Kebap Sanatı, Yeniden Tanımlandı",
+        heroSubtitle: "Çağdaş zarafet atmosferinde otantik Türk lezzetlerini modern dokunuşla deneyimleyin",
+        viewMenu: "Menüyü Görüntüle",
+        makeReservation: "Rezervasyon Yap",
+        
+        // Welcome Section
+        welcomeTo: "Hoş Geldiniz",
+        restaurantName: "Sultan's Feast",
+        welcomeText1: "Üç nesildir ailemiz geleneksel Türk mutfağının sanatını mükemmelleştirdi. Sultan's Feast'te, zamana dayanmış bu tarifleri onurlandırırken modern mutfak tekniklerini benimsiyor ve unutulmaz bir yemek deneyimi yaratıyoruz.",
+        welcomeText2: "Her yemek en kaliteli malzemelerle hazırlanır; Türkiye'den doğrudan ithal edilen özenle seçilmiş baharatlardan yerel kaynaklı premium etlere kadar, sizi İstanbul'un hareketli sokaklarına götüren otantik lezzetler garantilenir.",
+        learnMore: "Hikayemiz Hakkında Daha Fazla Bilgi",
+        
+        // Featured Items
+        signatureSpecialties: "İmza Lezzetleri",
+        specialtiesSubtitle: "Tutkuyla hazırlanan ve gururla servis edilen en sevilen yemeklerimizi keşfedin",
+        viewFullMenu: "Tam Menüyü Görüntüle",
+        
+        // Location & Hours
+        visitOurRestaurant: "Restoranımızı Ziyaret Edin",
+        address: "Adres",
+        openingHours: "Açılış Saatleri",
+        reservations: "Rezervasyonlar",
+        mondayThursday: "Pazartesi - Perşembe: 11:30 - 22:00",
+        fridaySaturday: "Cuma - Cumartesi: 11:30 - 23:00",
+        sunday: "Pazar: 12:00 - 21:00",
+        makeReservationForm: "Rezervasyon Yapın",
+        firstName: "Ad",
+        lastName: "Soyad",
+        emailAddress: "E-posta Adresi",
+        phoneNumber: "Telefon Numarası",
+        selectTime: "Saat Seçin",
+        partySize: "Kişi Sayısı",
+        reserveTable: "Masa Rezervasyonu",
+        guests1: "1 Kişi",
+        guests2: "2 Kişi",
+        guests3: "3 Kişi",
+        guests4: "4 Kişi",
+        guests5: "5 Kişi",
+        guests6: "6+ Kişi",
+        
+        // Footer
+        footerDescription: "Geleneksel Türk mutfağının modern zarafetle buluştuğu yer. Nesiller boyu aktarılan otantik lezzetleri deneyimleyin.",
+        quickLinks: "Hızlı Bağlantılar",
+        contactInfo: "İletişim Bilgileri",
+        copyright: "© 2024 Sultan's Feast. Tüm hakları saklıdır.",
+        privacyPolicy: "Gizlilik Politikası",
+        termsOfService: "Hizmet Şartları",
+        cookiePolicy: "Çerez Politikası",
+        
+        // Menu Items
+        sultanAdanaKebab: "Sultan Adana Kebap",
+        sultanAdanaDesc: "Geleneksel Anadolu baharatları ile tatlandırılmış el kıyması kuzu eti, mükemmel şekilde ızgara edildi",
+        imperialMixedGrill: "İmparatorluk Karışık Izgara",
+        imperialMixedDesc: "Kuzu pirzola, tavuk şiş ve Adana kebabı ile geleneksel garnitürler içeren kraliyet ziyafeti",
+        artisanBaklava: "Usta Baklavası",
+        artisanBaklavaDesc: "Fıstık ve bal ile katmanlı çıtır yufka hamuru, usta pastane şefimiz tarafından hazırlandı",
+        
+        // Common
+        popular: "Popüler",
+        vegetarian: "Vejetaryen",
+        addToCart: "Sepete Ekle",
+        details: "Detaylar",
+        
+        // Form Messages
+        thankYouReservation: "Rezervasyon talebiniz için teşekkürler! Size rezervasyonunuzu onaylamak için kısa sürede geri dönüş yapacağız.",
+        fillRequiredFields: "Lütfen tüm zorunlu alanları doldurun.",
+        sending: "Gönderiliyor...",
+        
+        // Meta
+        pageTitle: "Sultan's Feast - Kebap Sanatı Yeniden Tanımlandı",
+        pageDescription: "Sultan's Feast'te geleneksel tarifler ve çağdaş zarafet ile otantik Türk kebap lezzetlerini modern dokunuşla deneyimleyin. Premium yemek deneyimi.",
+        menuPageTitle: "Menümüz - Sultan's Feast",
+        menuPageDescription: "Geleneksel kebaplar, mezeler ve tatlılarımızı içeren otantik Türk menümüzü keşfedin. Sultan's Feast'te en iyi Türk mutfağını deneyimleyin."
+    },
+    en: {
+        // Navigation
+        homepage: "Homepage",
+        menu: "Menu",
+        ourStory: "Our Story",
+        locations: "Locations",
+        contact: "Contact",
+        reservation: "Reservation",
+        
+        // Hero Section
+        heroTitle: "The Art of Kebab, Redefined",
+        heroSubtitle: "Experience authentic Turkish flavors with a modern touch in an atmosphere of contemporary elegance",
+        viewMenu: "View Menu",
+        makeReservation: "Make Reservation",
+        
+        // Welcome Section
+        welcomeTo: "Welcome to",
+        restaurantName: "Sultan's Feast",
+        welcomeText1: "For over three generations, our family has perfected the art of traditional Turkish cuisine. At Sultan's Feast, we honor these time-tested recipes while embracing modern culinary techniques to create an unforgettable dining experience.",
+        welcomeText2: "Every dish is crafted with the finest ingredients, from hand-selected spices imported directly from Turkey to locally-sourced premium meats, ensuring authentic flavors that transport you to the bustling streets of Istanbul.",
+        learnMore: "Learn More About Our Story",
+        
+        // Featured Items
+        signatureSpecialties: "Signature Specialties",
+        specialtiesSubtitle: "Discover our most beloved dishes, each prepared with passion and served with pride",
+        viewFullMenu: "View Full Menu",
+        
+        // Location & Hours
+        visitOurRestaurant: "Visit Our Restaurant",
+        address: "Address",
+        openingHours: "Opening Hours",
+        reservations: "Reservations",
+        mondayThursday: "Monday - Thursday: 11:30 AM - 10:00 PM",
+        fridaySaturday: "Friday - Saturday: 11:30 AM - 11:00 PM",
+        sunday: "Sunday: 12:00 PM - 9:00 PM",
+        makeReservationForm: "Make a Reservation",
+        firstName: "First Name",
+        lastName: "Last Name",
+        emailAddress: "Email Address",
+        phoneNumber: "Phone Number",
+        selectTime: "Select Time",
+        partySize: "Party Size",
+        reserveTable: "Reserve Table",
+        guests1: "1 Guest",
+        guests2: "2 Guests",
+        guests3: "3 Guests",
+        guests4: "4 Guests",
+        guests5: "5 Guests",
+        guests6: "6+ Guests",
+        
+        // Footer
+        footerDescription: "Where traditional Turkish cuisine meets modern elegance. Experience the authentic flavors that have been passed down through generations.",
+        quickLinks: "Quick Links",
+        contactInfo: "Contact Info",
+        copyright: "© 2024 Sultan's Feast. All rights reserved.",
+        privacyPolicy: "Privacy Policy",
+        termsOfService: "Terms of Service",
+        cookiePolicy: "Cookie Policy",
+        
+        // Menu Items
+        sultanAdanaKebab: "Sultan's Adana Kebab",
+        sultanAdanaDesc: "Hand-minced lamb seasoned with traditional Anatolian spices, grilled to perfection",
+        imperialMixedGrill: "Imperial Mixed Grill",
+        imperialMixedDesc: "A royal feast featuring lamb chops, chicken shish, and Adana kebab with traditional sides",
+        artisanBaklava: "Artisan Baklava",
+        artisanBaklavaDesc: "Layers of crispy phyllo pastry with pistachios and honey, crafted by our master pastry chef",
+        
+        // Common
+        popular: "Popular",
+        vegetarian: "Vegetarian",
+        addToCart: "Add to Cart",
+        details: "Details",
+        
+        // Form Messages
+        thankYouReservation: "Thank you for your reservation request! We will contact you shortly to confirm your booking.",
+        fillRequiredFields: "Please fill in all required fields.",
+        sending: "Sending...",
+        
+        // Meta
+        pageTitle: "Sultan's Feast - The Art of Kebab, Redefined",
+        pageDescription: "Experience authentic Turkish kebab flavors with a modern touch at Sultan's Feast. Premium dining experience with traditional recipes and contemporary elegance.",
+        menuPageTitle: "Menu - Sultan's Feast",
+        menuPageDescription: "Explore our authentic Turkish menu featuring traditional kebabs, appetizers, and desserts. Experience the finest Turkish cuisine at Sultan's Feast."
+    }
+};
+
 class LanguageManager {
     constructor() {
         this.currentLanguage = 'tr'; // Default to Turkish
         this.storageKey = 'sultans-feast-language';
         this.supportedLanguages = ['tr', 'en'];
+        this.translations = translations;
         
         this.init();
     }
@@ -46,6 +221,13 @@ class LanguageManager {
      */
     storeLanguage(lang) {
         localStorage.setItem(this.storageKey, lang);
+    }
+    
+    /**
+     * Get translation for a key
+     */
+    t(key) {
+        return this.translations[this.currentLanguage][key] || key;
     }
     
     /**
@@ -104,11 +286,17 @@ class LanguageManager {
         // Translate all elements with data-lang attributes
         this.translateElements();
         
+        // Translate elements with data-i18n attributes using the translation library
+        this.translateI18nElements();
+        
         // Update language switcher UI
         this.updateLanguageSwitcherUI();
         
         // Update page title and meta description if available
         this.updatePageMeta();
+        
+        // Update document language
+        document.documentElement.lang = this.currentLanguage;
         
         // Trigger custom event for other components to react
         this.dispatchLanguageChangeEvent();
@@ -123,7 +311,7 @@ class LanguageManager {
     }
     
     /**
-     * Translate all elements with data-lang attributes
+     * Translate all elements with data-lang attributes (legacy support)
      */
     translateElements() {
         const elements = document.querySelectorAll(`[data-lang-${this.currentLanguage}]`);
@@ -162,6 +350,58 @@ class LanguageManager {
     }
     
     /**
+     * Translate elements with data-i18n attributes using the translation library
+     */
+    translateI18nElements() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = this.t(key);
+            
+            if (translation && translation !== key) {
+                if (element.tagName === 'INPUT' && (element.type === 'submit' || element.type === 'button')) {
+                    element.value = translation;
+                } else if (element.hasAttribute('placeholder')) {
+                    element.placeholder = translation;
+                } else if (element.hasAttribute('alt')) {
+                    element.alt = translation;
+                } else {
+                    // Handle HTML content preservation
+                    const hasHTML = element.innerHTML.includes('<i ') || element.innerHTML.includes('<span');
+                    if (hasHTML) {
+                        // Preserve icons and spans
+                        const iconMatch = element.innerHTML.match(/<i[^>]*><\/i>/);
+                        const spanMatch = element.innerHTML.match(/<span[^>]*>.*?<\/span>/);
+                        let newContent = translation;
+                        
+                        if (iconMatch) {
+                            newContent = iconMatch[0] + ' ' + translation;
+                        }
+                        if (spanMatch) {
+                            newContent = translation.replace(/\$\{span\}/, spanMatch[0]);
+                        }
+                        
+                        element.innerHTML = newContent;
+                    } else {
+                        element.textContent = translation;
+                    }
+                }
+            }
+        });
+        
+        // Handle placeholder translations
+        const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+        placeholderElements.forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            const translation = this.t(key);
+            if (translation && translation !== key) {
+                element.placeholder = translation;
+            }
+        });
+    }
+    
+    /**
      * Update language switcher UI to show active language
      */
     updateLanguageSwitcherUI() {
@@ -190,25 +430,62 @@ class LanguageManager {
                 switcher.classList.add('text-white');
             }
         });
+        
+        // Ensure proper styling is applied on page load
+        setTimeout(() => {
+            this.applyLanguageSwitcherStyling();
+        }, 100);
+    }
+    
+    /**
+     * Apply proper styling to language switchers
+     */
+    applyLanguageSwitcherStyling() {
+        const allSwitchers = document.querySelectorAll('[data-lang-switch], [data-mobile-lang-switch]');
+        allSwitchers.forEach(switcher => {
+            const switchLang = switcher.getAttribute('data-lang-switch') || switcher.getAttribute('data-mobile-lang-switch');
+            if (switchLang === this.currentLanguage) {
+                switcher.classList.add('text-gold');
+                switcher.classList.remove('text-white', 'text-gray-300');
+            } else {
+                switcher.classList.remove('text-gold');
+                switcher.classList.add('text-white');
+            }
+        });
     }
     
     /**
      * Update page title and meta description based on current language
      */
     updatePageMeta() {
+        // Update title using data attributes (legacy support)
         const titleElement = document.querySelector('title[data-lang-tr][data-lang-en]');
         if (titleElement) {
             const newTitle = titleElement.getAttribute(`data-lang-${this.currentLanguage}`);
             if (newTitle) {
                 document.title = newTitle;
             }
+        } else {
+            // Use translation library for title
+            const isMenuPage = window.location.pathname.includes('menu.html');
+            const titleKey = isMenuPage ? 'menuPageTitle' : 'pageTitle';
+            document.title = this.t(titleKey);
         }
         
+        // Update meta description using data attributes (legacy support)
         const metaDescription = document.querySelector('meta[name="description"][data-lang-tr][data-lang-en]');
         if (metaDescription) {
             const newDescription = metaDescription.getAttribute(`data-lang-${this.currentLanguage}`);
             if (newDescription) {
                 metaDescription.setAttribute('content', newDescription);
+            }
+        } else {
+            // Use translation library for description
+            const isMenuPage = window.location.pathname.includes('menu.html');
+            const descKey = isMenuPage ? 'menuPageDescription' : 'pageDescription';
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.setAttribute('content', this.t(descKey));
             }
         }
     }
