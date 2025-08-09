@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ocakbaşı Kebap | Gerçek Ocakbaşı Lezzeti</title>
+    <meta name="description" content="Gerçek ocakbaşı lezzetlerini, usta şeflerin elinden modern ve sıcak bir atmosferde keşfedin. Rezervasyon için hemen tıklayın." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">İçeriğe geç</a>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="brand" aria-label="Ocakbaşı Kebap Ana Sayfa">
+          <img src="./assets/logo.svg" alt="Ocakbaşı Kebap" width="140" height="40" />
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç/kapat">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Birincil">
+          <ul>
+            <li><a href="#hero">Ana Sayfa</a></li>
+            <li><a href="#about">Hakkımızda</a></li>
+            <li><a href="#menu">Menü</a></li>
+            <li><a href="#locations">Şubeler</a></li>
+            <li><a href="#reservation">Rezervasyon</a></li>
+            <li><a href="#gallery">Galeri</a></li>
+            <li><a href="#contact">İletişim</a></li>
+          </ul>
+          <div class="nav-cta">
+            <a class="btn btn-primary" href="#reservation">Rezervasyon Yap</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="hero" class="hero" aria-label="Karşılama">
+        <div class="hero-bg" role="img" aria-label="Ocakbaşı ateşi ve ızgara görseli"></div>
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <h1>Gerçek Ocakbaşı Lezzeti</h1>
+            <p>Usta şeflerin elinden çıkan kebaplar, meze ve tatlılarla unutulmaz bir deneyim.</p>
+            <div class="hero-actions">
+              <a href="#menu" class="btn btn-primary">Menüyü İncele</a>
+              <a href="#reservation" class="btn btn-outline">Rezervasyon Yap</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="features" aria-label="Öne çıkan özellikler">
+        <div class="container grid-3">
+          <article class="feature">
+            <div class="icon" aria-hidden="true">🔥</div>
+            <h3>Odun Ateşi</h3>
+            <p>Lezzetin sırrı, kor ateşte mühürlenen etlerde saklı.</p>
+          </article>
+          <article class="feature">
+            <div class="icon" aria-hidden="true">🥗</div>
+            <h3>Günlük Malzeme</h3>
+            <p>Her gün taze hazırlanan meze ve garnitürler.</p>
+          </article>
+          <article class="feature">
+            <div class="icon" aria-hidden="true">👨‍🍳</div>
+            <h3>Usta Şefler</h3>
+            <p>Geleneksel tarifler, modern sunumlarla buluşuyor.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="about section" aria-label="Hakkımızda">
+        <div class="container about-inner">
+          <div class="about-media">
+            <img src="https://picsum.photos/800/600?random=21" alt="Ocakbaşı ızgara ve meze sunumu" loading="lazy" />
+          </div>
+          <div class="about-content">
+            <h2>Ocakbaşı kültürü, modern dokunuşla</h2>
+            <p>Yılların deneyimini, misafirperverliğimizi ve kaliteli malzemeyi bir araya getiriyoruz. Şehrin kalbinde, sıcak bir atmosferde gerçek ocakbaşı lezzetleri sunuyoruz.</p>
+            <ul class="checklist">
+              <li>Geniş meze çeşitleri</li>
+              <li>Odun ateşinde kebaplar</li>
+              <li>Vejetaryen seçenekler</li>
+            </ul>
+            <a href="#reservation" class="btn btn-primary">Masa Ayırt</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="menu section" aria-label="Menü">
+        <div class="container">
+          <header class="section-header">
+            <h2>Menü</h2>
+            <p>En sevilen kebaplarımızdan seçtiklerimiz</p>
+          </header>
+          <div class="menu-grid">
+            <article class="menu-card">
+              <img src="https://picsum.photos/640/480?random=1" alt="Adana Kebap" loading="lazy" />
+              <div class="menu-card-body">
+                <h3>Adana Kebap</h3>
+                <p>Acı sevenler için bol baharatlı ve sulu.</p>
+                <div class="menu-meta">
+                  <span class="price">300₺</span>
+                  <span class="tag">Acılı</span>
+                </div>
+              </div>
+            </article>
+            <article class="menu-card">
+              <img src="https://picsum.photos/640/480?random=2" alt="Urfa Kebap" loading="lazy" />
+              <div class="menu-card-body">
+                <h3>Urfa Kebap</h3>
+                <p>Damakta iz bırakan, acısız ve dengeli.</p>
+                <div class="menu-meta">
+                  <span class="price">295₺</span>
+                  <span class="tag">Acısız</span>
+                </div>
+              </div>
+            </article>
+            <article class="menu-card">
+              <img src="https://picsum.photos/640/480?random=3" alt="Beyti" loading="lazy" />
+              <div class="menu-card-body">
+                <h3>Beyti</h3>
+                <p>Yoğurt ve domates sosuyla, lavaşa sarılı.</p>
+                <div class="menu-meta">
+                  <span class="price">330₺</span>
+                  <span class="tag">Favori</span>
+                </div>
+              </div>
+            </article>
+            <article class="menu-card">
+              <img src="https://picsum.photos/640/480?random=4" alt="Ali Nazik" loading="lazy" />
+              <div class="menu-card-body">
+                <h3>Ali Nazik</h3>
+                <p>Köz patlıcanlı taban üzerinde dana-kuzu karışımı.</p>
+                <div class="menu-meta">
+                  <span class="price">340₺</span>
+                  <span class="tag">Şefin Seçimi</span>
+                </div>
+              </div>
+            </article>
+            <article class="menu-card">
+              <img src="https://picsum.photos/640/480?random=5" alt="Çöp Şiş" loading="lazy" />
+              <div class="menu-card-body">
+                <h3>Çöp Şiş</h3>
+                <p>Yumuşacık lokmalar, odun ateşinde.</p>
+                <div class="menu-meta">
+                  <span class="price">310₺</span>
+                  <span class="tag">Popüler</span>
+                </div>
+              </div>
+            </article>
+            <article class="menu-card">
+              <img src="https://picsum.photos/640/480?random=6" alt="Karışık Izgara" loading="lazy" />
+              <div class="menu-card-body">
+                <h3>Karışık Izgara</h3>
+                <p>Paylaşmalık zengin bir ızgara şöleni.</p>
+                <div class="menu-meta">
+                  <span class="price">520₺</span>
+                  <span class="tag">Paylaş</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="section-cta">
+            <a href="#contact" class="btn btn-outline">Tüm Menüyü Gör (PDF)</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="locations" class="locations section" aria-label="Şubeler">
+        <div class="container">
+          <header class="section-header">
+            <h2>Şubeler</h2>
+            <p>Şehrin farklı noktalarında hizmetinizdeyiz</p>
+          </header>
+          <div class="locations-grid">
+            <article class="location-card">
+              <h3>Nişantaşı</h3>
+              <p>Teşvikiye Mah. Örnek Sk. No:12 Şişli / İstanbul</p>
+              <p><strong>Telefon:</strong> <a href="tel:+902122222222">+90 212 222 22 22</a></p>
+              <p><strong>Çalışma Saatleri:</strong> 12:00 - 23:30</p>
+            </article>
+            <article class="location-card">
+              <h3>Bağdat Caddesi</h3>
+              <p>Caddebostan Mah. Örnek Cd. No:45 Kadıköy / İstanbul</p>
+              <p><strong>Telefon:</strong> <a href="tel:+902163333333">+90 216 333 33 33</a></p>
+              <p><strong>Çalışma Saatleri:</strong> 12:00 - 23:30</p>
+            </article>
+            <article class="location-card">
+              <h3>Çankaya</h3>
+              <p>Filistin Cd. No:8 Çankaya / Ankara</p>
+              <p><strong>Telefon:</strong> <a href="tel:+903123444444">+90 312 344 44 44</a></p>
+              <p><strong>Çalışma Saatleri:</strong> 12:00 - 23:30</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="reservation" class="reservation section" aria-label="Rezervasyon">
+        <div class="container">
+          <header class="section-header">
+            <h2>Rezervasyon</h2>
+            <p>Hızlıca masa ayırtın</p>
+          </header>
+          <form class="reservation-form" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="res-name">Ad Soyad</label>
+                <input id="res-name" name="name" type="text" placeholder="Adınız Soyadınız" required />
+                <span class="error" data-for="res-name"></span>
+              </div>
+              <div class="form-field">
+                <label for="res-phone">Telefon</label>
+                <input id="res-phone" name="phone" type="tel" placeholder="05xx xxx xx xx" required />
+                <span class="error" data-for="res-phone"></span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="res-date">Tarih</label>
+                <input id="res-date" name="date" type="date" required />
+                <span class="error" data-for="res-date"></span>
+              </div>
+              <div class="form-field">
+                <label for="res-time">Saat</label>
+                <input id="res-time" name="time" type="time" required />
+                <span class="error" data-for="res-time"></span>
+              </div>
+              <div class="form-field">
+                <label for="res-guests">Kişi</label>
+                <select id="res-guests" name="guests" required>
+                  <option value="">Seçiniz</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6+</option>
+                </select>
+                <span class="error" data-for="res-guests"></span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field full">
+                <label for="res-note">Not</label>
+                <textarea id="res-note" name="note" rows="3" placeholder="Tercihleriniz, alerjiler vb."></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Rezervasyon Talebi Gönder</button>
+              <p class="form-hint">Talebiniz onaylandıktan sonra SMS ile bilgilendirileceksiniz.</p>
+            </div>
+            <div class="form-toast" role="status" aria-live="polite" hidden>
+              Talebiniz alındı. Teşekkür ederiz!
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery section" aria-label="Galeri">
+        <div class="container">
+          <header class="section-header">
+            <h2>Galeri</h2>
+            <p>Mutfağımızdan kareler</p>
+          </header>
+          <div class="gallery-grid">
+            <img src="https://picsum.photos/600/600?random=11" alt="Kebap sunumu" loading="lazy" />
+            <img src="https://picsum.photos/600/600?random=12" alt="Meze çeşitleri" loading="lazy" />
+            <img src="https://picsum.photos/600/600?random=13" alt="Mangal ateşi" loading="lazy" />
+            <img src="https://picsum.photos/600/600?random=14" alt="Şef çalışırken" loading="lazy" />
+            <img src="https://picsum.photos/600/600?random=15" alt="Restoran iç mekân" loading="lazy" />
+            <img src="https://picsum.photos/600/600?random=16" alt="Tatlı sunumu" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact section" aria-label="İletişim">
+        <div class="container contact-inner">
+          <div class="contact-card">
+            <h2>İletişim</h2>
+            <p><strong>Adres:</strong> Örnek Mah. Lezzet Sk. No:10, İstanbul</p>
+            <p><strong>Telefon:</strong> <a href="tel:+905551112233">+90 555 111 22 33</a></p>
+            <p><strong>E‑posta:</strong> <a href="mailto:info@ocakbasi.com">info@ocakbasi.com</a></p>
+            <div class="contact-actions">
+              <a class="btn btn-outline" href="tel:+905551112233">Ara</a>
+              <a class="btn btn-outline" href="https://wa.me/905551112233" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+            <div class="hours">
+              <h3>Çalışma Saatleri</h3>
+              <ul>
+                <li>Pzt‑Cum: 12:00 – 23:30</li>
+                <li>Cmt‑Paz: 12:00 – 00:30</li>
+              </ul>
+            </div>
+          </div>
+          <div class="map-card">
+            <iframe title="Konum Haritası" src="https://maps.google.com/maps?q=istanbul&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a href="#top" class="brand">
+          <img src="./assets/logo.svg" alt="Ocakbaşı Kebap" width="120" height="34" />
+        </a>
+        <nav aria-label="Alt">
+          <ul>
+            <li><a href="#about">Hakkımızda</a></li>
+            <li><a href="#menu">Menü</a></li>
+            <li><a href="#reservation">Rezervasyon</a></li>
+            <li><a href="#contact">İletişim</a></li>
+          </ul>
+        </nav>
+        <p class="copyright">© <span id="year"></span> Ocakbaşı Kebap. Tüm hakları saklıdır.</p>
+      </div>
+    </footer>
+
+    <script src="./scripts/main.js" defer></script>
+  </body>
+</html>
