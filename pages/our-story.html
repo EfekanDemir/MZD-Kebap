@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Story - MZD Kebap ve Dürüm Evi</title>
-    <meta name="description" content="Discover the heritage and passion behind MZD Kebap ve Dürüm Evi. Three generations of authentic Turkish cuisine, from a small family kitchen in Gaziantep to the heart of the city.">
+    <title data-lang-tr="Hikayemiz - MZD Kebap ve Dürüm Evi" data-lang-en="Our Story - MZD Kebap ve Dürüm Evi">Hikayemiz - MZD Kebap ve Dürüm Evi</title>
+    <meta name="description" data-lang-tr="MZD Kebap ve Dürüm Evi'nin geçmişini ve tutkusunu keşfedin. Gaziantep'teki küçük aile mutfağından şehrin kalbine uzanan üç neslik otantik Türk mutfağı mirası." data-lang-en="Discover the heritage and passion behind MZD Kebap ve Dürüm Evi. Three generations of authentic Turkish cuisine, from a small family kitchen in Gaziantep to the heart of the city." content="MZD Kebap ve Dürüm Evi'nin geçmişini ve tutkusunu keşfedin. Gaziantep'teki küçük aile mutfağından şehrin kalbine uzanan üç neslik otantik Türk mutfağı mirası.">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,27 +35,46 @@
             -webkit-backdrop-filter: blur(10px);
         }
         
+        :root {
+            --primary-amber: #F59E0B;
+            --primary-amber-light: #FCD34D;
+            --primary-amber-dark: #D97706;
+            --accent-orange: #EA580C;
+            --accent-orange-light: #FB923C;
+            --background-dark: #0F172A;
+            --background-medium: #1E293B;
+            --background-light: #334155;
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --text-muted: #94A3B8;
+        }
+        
         .text-gold {
-            color: #D4AF37;
+            color: var(--primary-amber);
         }
         
         .border-gold {
-            border-color: #D4AF37;
+            border-color: var(--primary-amber);
         }
         
         .hover-gold:hover {
-            color: #FFD700;
+            color: var(--primary-amber-light);
         }
         
         .btn-gold {
-            background: linear-gradient(135deg, #D4AF37, #FFD700);
+            background: linear-gradient(135deg, var(--primary-amber), var(--accent-orange));
             transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.2);
         }
         
         .btn-gold:hover {
-            background: linear-gradient(135deg, #FFD700, #D4AF37);
+            background: linear-gradient(135deg, var(--accent-orange), var(--primary-amber));
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+        
+        .bg-gold {
+            background-color: var(--primary-amber);
         }
         
         .mobile-menu-slide {
@@ -116,9 +135,9 @@
             top: 0.5rem;
             width: 1rem;
             height: 1rem;
-            background: #D4AF37;
+            background: #F59E0B;
             border-radius: 50%;
-            border: 3px solid #1f2937;
+            border: 3px solid #1E293B;
         }
         
         .timeline-item::after {
@@ -128,7 +147,7 @@
             top: 1.5rem;
             width: 2px;
             height: calc(100% + 2rem);
-            background: #D4AF37;
+            background: #F59E0B;
         }
         
         .timeline-item:last-child::after {
@@ -148,7 +167,7 @@
         .quote-style::before {
             content: '"';
             font-size: 4rem;
-            color: #D4AF37;
+            color: #F59E0B;
             position: absolute;
             left: -2rem;
             top: -1rem;
@@ -156,12 +175,13 @@
         }
         
         .stats-card {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 215, 0, 0.05));
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(234, 88, 12, 0.05));
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            backdrop-filter: blur(10px);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white scroll-smooth">
+<body class="text-white scroll-smooth" style="background-color: var(--background-dark);">
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 bg-opacity-95 nav-blur shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -175,17 +195,17 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-8">
-                    <a href="index.html" class="text-white hover-gold font-medium transition-colors">Homepage</a>
-                    <a href="menu.html" class="text-white hover-gold font-medium transition-colors">Menu</a>
-                    <a href="our-story.html" class="text-gold font-medium transition-colors">Our Story</a>
-                    <a href="contact.html" class="text-white hover-gold font-medium transition-colors">Contact</a>
-                    <a href="index.html#reservation" class="btn-gold text-gray-900 px-6 py-2 rounded-full font-semibold">
-                        Reservation
+                    <a href="../index.html" class="text-white hover-gold font-medium transition-colors" data-lang-tr="Ana Sayfa" data-lang-en="Homepage">Ana Sayfa</a>
+                    <a href="menu.html" class="text-white hover-gold font-medium transition-colors" data-lang-tr="Menü" data-lang-en="Menu">Menü</a>
+                    <a href="our-story.html" class="text-gold font-medium transition-colors" data-lang-tr="Hikayemiz" data-lang-en="Our Story">Hikayemiz</a>
+                    <a href="contact.html" class="text-white hover-gold font-medium transition-colors" data-lang-tr="İletişim" data-lang-en="Contact">İletişim</a>
+                    <a href="../index.html#reservation" class="btn-gold text-gray-900 px-6 py-2 rounded-full font-semibold" data-lang-tr="Rezervasyon" data-lang-en="Reservation">
+                        Rezervasyon
                     </a>
                     <div class="flex items-center space-x-2 text-sm">
-                        <span class="text-gold cursor-pointer hover:text-yellow-300">TR</span>
+                        <span class="text-gold cursor-pointer hover:text-yellow-300" data-lang-switch="tr">TR</span>
                         <span class="text-gray-400">/</span>
-                        <span class="text-white cursor-pointer hover:text-gray-300">EN</span>
+                        <span class="text-white cursor-pointer hover:text-gray-300" data-lang-switch="en">EN</span>
                     </div>
                 </div>
                 
@@ -205,17 +225,17 @@
                     <i class="fas fa-times text-2xl"></i>
                 </button>
                 
-                <a href="index.html" class="text-2xl text-white hover-gold font-medium transition-colors">Homepage</a>
-                <a href="menu.html" class="text-2xl text-white hover-gold font-medium transition-colors">Menu</a>
-                <a href="our-story.html" class="text-2xl text-gold font-medium transition-colors">Our Story</a>
-                <a href="contact.html" class="text-2xl text-white hover-gold font-medium transition-colors">Contact</a>
-                <a href="index.html#reservation" class="btn-gold text-gray-900 px-8 py-3 rounded-full font-semibold text-lg">
-                    Reservation
+                <a href="../index.html" class="text-2xl text-white hover-gold font-medium transition-colors" data-lang-tr="Ana Sayfa" data-lang-en="Homepage">Ana Sayfa</a>
+                <a href="menu.html" class="text-2xl text-white hover-gold font-medium transition-colors" data-lang-tr="Menü" data-lang-en="Menu">Menü</a>
+                <a href="our-story.html" class="text-2xl text-gold font-medium transition-colors" data-lang-tr="Hikayemiz" data-lang-en="Our Story">Hikayemiz</a>
+                <a href="contact.html" class="text-2xl text-white hover-gold font-medium transition-colors" data-lang-tr="İletişim" data-lang-en="Contact">İletişim</a>
+                <a href="../index.html#reservation" class="btn-gold text-gray-900 px-8 py-3 rounded-full font-semibold text-lg" data-lang-tr="Rezervasyon" data-lang-en="Reservation">
+                    Rezervasyon
                 </a>
                 <div class="flex items-center space-x-4 text-lg">
-                    <span class="text-gold cursor-pointer hover:text-yellow-300">TR</span>
+                    <span class="text-gold cursor-pointer hover:text-yellow-300" data-mobile-lang-switch="tr">TR</span>
                     <span class="text-gray-400">/</span>
-                    <span class="text-white cursor-pointer hover:text-gray-300">EN</span>
+                    <span class="text-white cursor-pointer hover:text-gray-300" data-mobile-lang-switch="en">EN</span>
                 </div>
             </div>
         </div>
@@ -224,11 +244,11 @@
     <!-- Hero Banner -->
     <section class="hero-bg h-screen flex items-center justify-center relative">
         <div class="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 fade-in">
-                Our <span class="text-gold">Story</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 fade-in" data-lang-tr="Bizim <span class='text-gold'>Hikayemiz</span>" data-lang-en="Our <span class='text-gold'>Story</span>">
+                Bizim <span class="text-gold">Hikayemiz</span>
             </h1>
-            <p class="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto fade-in-delay">
-                Three generations of culinary excellence, from the ancient streets of Gaziantep to the heart of the modern city
+            <p class="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto fade-in-delay" data-lang-tr="Gaziantep'in eski sokaklarından modern şehrin kalbine uzanan üç neslik mutfak mükemmelliği" data-lang-en="Three generations of culinary excellence, from the ancient streets of Gaziantep to the heart of the modern city">
+                Gaziantep'in eski sokaklarından modern şehrin kalbine uzanan üç neslik mutfak mükemmelliği
             </p>
         </div>
         
@@ -245,14 +265,14 @@
                 <!-- Story Narrative Column -->
                 <div class="space-y-8">
                     <div class="fade-in">
-                        <h2 class="text-3xl sm:text-4xl font-bold mb-6">
-                            From Humble <span class="text-gold">Beginnings</span>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-6" data-lang-tr="Mütevazı <span class='text-gold'>Başlangıçlar</span>" data-lang-en="From Humble <span class='text-gold'>Beginnings</span>">
+                            Mütevazı <span class="text-gold">Başlangıçlar</span>
                         </h2>
-                        <p class="text-gray-300 text-lg leading-relaxed mb-6">
-                            In 1952, in a small family kitchen nestled in the ancient city of Gaziantep, our grandfather Mehmet began what would become a culinary legacy. With nothing but traditional recipes passed down through generations and an unwavering commitment to authenticity, he started preparing kebabs for local families and neighbors.
+                        <p class="text-gray-300 text-lg leading-relaxed mb-6" data-lang-tr="1952 yılında, Gaziantep'in tarihi şehrinde küçük bir aile mutfağında dedemiz Mehmet, bir mutfak mirası haline gelecek olan şeyi başlattı. Sadece nesillerden nesillere aktarılan geleneksel tarifler ve orijinalliğe olan sarsılmaz bağlılığıyla, yerel aileler ve komşular için kebap hazırlamaya başladı." data-lang-en="In 1952, in a small family kitchen nestled in the ancient city of Gaziantep, our grandfather Mehmet began what would become a culinary legacy. With nothing but traditional recipes passed down through generations and an unwavering commitment to authenticity, he started preparing kebabs for local families and neighbors.">
+                            1952 yılında, Gaziantep'in tarihi şehrinde küçük bir aile mutfağında dedemiz Mehmet, bir mutfak mirası haline gelecek olan şeyi başlattı. Sadece nesillerden nesillere aktarılan geleneksel tarifler ve orijinalliğe olan sarsılmaz bağlılığıyla, yerel aileler ve komşular için kebap hazırlamaya başladı.
                         </p>
-                        <p class="text-gray-300 text-lg leading-relaxed">
-                            What started as a humble endeavor to share the rich flavors of Anatolian cuisine soon grew into something much greater. Word spread throughout the narrow cobblestone streets about the extraordinary taste of Mehmet's kebabs, each one crafted with hand-selected spices and cooked over glowing charcoal.
+                        <p class="text-gray-300 text-lg leading-relaxed" data-lang-tr="Anadolu mutfağının zengin lezzetlerini paylaşma konusundaki bu mütevazı çaba, kısa sürede çok daha büyük bir şeye dönüştü. Dar taş kaldırımlı sokaklar boyunca Mehmet'in kebaplarının olağanüstü tadı hakkında haberler yayıldı; her biri özenle seçilmiş baharatlarla hazırlanmış ve közde pişirilmişti." data-lang-en="What started as a humble endeavor to share the rich flavors of Anatolian cuisine soon grew into something much greater. Word spread throughout the narrow cobblestone streets about the extraordinary taste of Mehmet's kebabs, each one crafted with hand-selected spices and cooked over glowing charcoal.">
+                            Anadolu mutfağının zengin lezzetlerini paylaşma konusundaki bu mütevazı çaba, kısa sürede çok daha büyük bir şeye dönüştü. Dar taş kaldırımlı sokaklar boyunca Mehmet'in kebaplarının olağanüstü tadı hakkında haberler yayıldı; her biri özenle seçilmiş baharatlarla hazırlanmış ve közde pişirilmişti.
                         </p>
                     </div>
                     
@@ -275,25 +295,25 @@
                 <!-- Image Gallery Column -->
                 <div class="space-y-6 fade-in-delay-2">
                     <div class="grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Traditional Turkish kitchen" 
-                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Master chef preparing kebabs" 
-                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Geleneksel Türk mutfağı" 
+                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg" data-lang-tr="Geleneksel Türk mutfağı" data-lang-en="Traditional Turkish kitchen">
+                        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Usta şef kebap hazırlıyor" 
+                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg" data-lang-tr="Usta şef kebap hazırlıyor" data-lang-en="Master chef preparing kebabs">
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Traditional spices and ingredients" 
-                         class="gallery-image w-full h-64 object-cover rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Geleneksel baharatlar ve malzemeler" 
+                         class="gallery-image w-full h-64 object-cover rounded-lg shadow-lg" data-lang-tr="Geleneksel baharatlar ve malzemeler" data-lang-en="Traditional spices and ingredients">
                     
                     <div class="grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1560624052-449f5ddf0c31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Restaurant ambiance" 
-                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Family legacy" 
-                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Restoran ambiyansı" 
+                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg" data-lang-tr="Restoran ambiyansı" data-lang-en="Restaurant ambiance">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Aile mirası" 
+                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg" data-lang-tr="Aile mirası" data-lang-en="Family legacy">
                     </div>
                 </div>
             </div>
@@ -448,16 +468,16 @@
                         Experience the authentic flavors that have been passed down through generations.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                        <a href="https://instagram.com/mzdkebap" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold transition-colors">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                        <a href="https://facebook.com/mzdkebap" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold transition-colors">
                             <i class="fab fa-facebook text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                        <a href="https://twitter.com/mzdkebap" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold transition-colors">
                             <i class="fab fa-twitter text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                        <a href="https://youtube.com/@mzdkebap" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold transition-colors">
                             <i class="fab fa-youtube text-xl"></i>
                         </a>
                     </div>
@@ -519,13 +539,16 @@
                     © 2024 MZD Kebap ve Dürüm Evi. All rights reserved.
                 </p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Terms of Service</a>
-                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Cookie Policy</a>
+                    <a href="javascript:void(0)" onclick="showLegalInfo('privacy')" class="text-gray-400 hover:text-gold text-sm transition-colors" data-lang-tr="Gizlilik Politikası" data-lang-en="Privacy Policy">Gizlilik Politikası</a>
+                    <a href="javascript:void(0)" onclick="showLegalInfo('terms')" class="text-gray-400 hover:text-gold text-sm transition-colors" data-lang-tr="Hizmet Şartları" data-lang-en="Terms of Service">Hizmet Şartları</a>
+                    <a href="javascript:void(0)" onclick="showLegalInfo('cookies')" class="text-gray-400 hover:text-gold text-sm transition-colors" data-lang-tr="Çerez Politikası" data-lang-en="Cookie Policy">Çerez Politikası</a>
                 </div>
             </div>
         </div>
     </footer>
+    
+    <!-- Load App JavaScript -->
+    <script src="../js/app.js"></script>
     
     <!-- JavaScript -->
     <script>

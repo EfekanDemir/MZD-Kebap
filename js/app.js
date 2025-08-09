@@ -878,6 +878,123 @@ window.getCurrentLanguage = function() {
 };
 
 /**
+ * Legal Information Modal Function
+ */
+window.showLegalInfo = function(type) {
+    const lang = window.languageManager.getCurrentLanguage();
+    
+    const content = {
+        privacy: {
+            tr: {
+                title: "Gizlilik Politikası",
+                content: `
+                    <h3 class="text-xl font-bold mb-4">Kişisel Verilerin Korunması</h3>
+                    <p class="mb-4">MZD Kebap ve Dürüm Evi olarak müşterilerimizin gizliliğini korumak bizim önceliğimizdir.</p>
+                    <h4 class="text-lg font-semibold mb-2">Toplanan Bilgiler</h4>
+                    <p class="mb-4">Rezervasyon sürecinde sadece gerekli iletişim bilgilerinizi topluyoruz.</p>
+                    <h4 class="text-lg font-semibold mb-2">Bilgilerin Kullanımı</h4>
+                    <p class="mb-4">Bilgileriniz sadece rezervasyon onayı ve iletişim amacıyla kullanılır.</p>
+                `
+            },
+            en: {
+                title: "Privacy Policy",
+                content: `
+                    <h3 class="text-xl font-bold mb-4">Personal Data Protection</h3>
+                    <p class="mb-4">As MZD Kebap ve Dürüm Evi, protecting our customers' privacy is our priority.</p>
+                    <h4 class="text-lg font-semibold mb-2">Information Collected</h4>
+                    <p class="mb-4">We only collect necessary contact information during the reservation process.</p>
+                    <h4 class="text-lg font-semibold mb-2">Use of Information</h4>
+                    <p class="mb-4">Your information is used only for reservation confirmation and communication purposes.</p>
+                `
+            }
+        },
+        terms: {
+            tr: {
+                title: "Hizmet Şartları",
+                content: `
+                    <h3 class="text-xl font-bold mb-4">Kullanım Koşulları</h3>
+                    <p class="mb-4">MZD Kebap ve Dürüm Evi web sitesini kullanarak aşağıdaki şartları kabul etmiş sayılırsınız.</p>
+                    <h4 class="text-lg font-semibold mb-2">Rezervasyon Şartları</h4>
+                    <p class="mb-4">Rezervasyonlar onay alınana kadar kesinleşmez. İptal için en az 2 saat önceden bilgi verilmelidir.</p>
+                    <h4 class="text-lg font-semibold mb-2">Sorumluluk</h4>
+                    <p class="mb-4">Restoran, müsaitlik durumuna göre rezervasyon taleplerini değerlendirme hakkını saklı tutar.</p>
+                `
+            },
+            en: {
+                title: "Terms of Service",
+                content: `
+                    <h3 class="text-xl font-bold mb-4">Terms of Use</h3>
+                    <p class="mb-4">By using the MZD Kebap ve Dürüm Evi website, you agree to the following terms.</p>
+                    <h4 class="text-lg font-semibold mb-2">Reservation Terms</h4>
+                    <p class="mb-4">Reservations are not confirmed until approval is received. Cancellations require at least 2 hours notice.</p>
+                    <h4 class="text-lg font-semibold mb-2">Liability</h4>
+                    <p class="mb-4">The restaurant reserves the right to evaluate reservation requests based on availability.</p>
+                `
+            }
+        },
+        cookies: {
+            tr: {
+                title: "Çerez Politikası",
+                content: `
+                    <h3 class="text-xl font-bold mb-4">Çerez Kullanımı</h3>
+                    <p class="mb-4">Web sitemizde deneyiminizi iyileştirmek için çerezler kullanıyoruz.</p>
+                    <h4 class="text-lg font-semibold mb-2">Çerez Türleri</h4>
+                    <p class="mb-4">Dil tercihi ve site kullanımı için gerekli çerezler kullanılmaktadır.</p>
+                    <h4 class="text-lg font-semibold mb-2">Kontrolü</h4>
+                    <p class="mb-4">Tarayıcı ayarlarınızdan çerezleri kontrol edebilirsiniz.</p>
+                `
+            },
+            en: {
+                title: "Cookie Policy",
+                content: `
+                    <h3 class="text-xl font-bold mb-4">Cookie Usage</h3>
+                    <p class="mb-4">We use cookies on our website to improve your experience.</p>
+                    <h4 class="text-lg font-semibold mb-2">Cookie Types</h4>
+                    <p class="mb-4">Essential cookies are used for language preference and site functionality.</p>
+                    <h4 class="text-lg font-semibold mb-2">Control</h4>
+                    <p class="mb-4">You can control cookies through your browser settings.</p>
+                `
+            }
+        }
+    };
+    
+    const modalContent = content[type][lang];
+    
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+    modal.innerHTML = `
+        <div class="bg-gray-800 rounded-lg max-w-2xl w-full max-h-96 overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-gold">${modalContent.title}</h2>
+                    <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-white text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="text-gray-300">
+                    ${modalContent.content}
+                </div>
+                <div class="mt-6 text-center">
+                    <button onclick="this.closest('.fixed').remove()" class="btn-gold text-gray-900 px-6 py-2 rounded-full font-semibold">
+                        ${lang === 'tr' ? 'Kapat' : 'Close'}
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Close on backdrop click
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+};
+
+/**
  * Export for module systems (if needed)
  */
 if (typeof module !== 'undefined' && module.exports) {
