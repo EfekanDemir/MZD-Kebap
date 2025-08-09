@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sultan's Feast - Web3 Wallet Connection Demo</title>
+    <meta name="description" content="Connect your crypto wallet to access exclusive Web3 features at Sultan's Feast.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Ethers.js Library CDN -->
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom color palette */
+        :root {
+            --gold: #D4AF37;
+            --dark-bg: #1a1a1a;
+            --card-bg: #2a2a2a;
+        }
+        
+        .text-gold {
+            color: var(--gold);
+        }
+        
+        .bg-gold {
+            background-color: var(--gold);
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-gold:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .wallet-card {
+            background: linear-gradient(145deg, #2a2a2a 0%, #1e1e1e 100%);
+            border: 1px solid #404040;
+            transition: all 0.3s ease;
+        }
+        
+        .wallet-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.1);
+        }
+        
+        .pulse-gold {
+            animation: pulse-gold 2s infinite;
+        }
+        
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .success-animation {
+            animation: successPulse 0.6s ease-out;
+        }
+        
+        @keyframes successPulse {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1a1a1a 100%);
+        }
+        
+        .network-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .network-ethereum { background-color: #627EEA; }
+        .network-polygon { background-color: #8247E5; }
+        .network-unknown { background-color: #666; }
+    </style>
+</head>
+<body class="gradient-bg text-white min-h-screen">
+    
+    <!-- Header -->
+    <header class="py-6 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <i class="fas fa-crown text-gold text-2xl"></i>
+                <h1 class="text-2xl font-bold">Sultan's Feast</h1>
+            </div>
+            <div class="text-sm text-gray-400">
+                Web3 Integration Demo
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+                Welcome to the <span class="text-gold">Future</span> of Dining
+            </h2>
+            <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+                Connect your crypto wallet to unlock exclusive Web3 features, NFT benefits, 
+                and cryptocurrency payment options at Sultan's Feast.
+            </p>
+        </div>
+        
+        <!-- Wallet Connection Card -->
+        <div class="wallet-card rounded-2xl p-8 sm:p-12 max-w-2xl mx-auto mb-12">
+            
+            <!-- Connection Status -->
+            <div id="connection-status" class="text-center mb-8">
+                <div id="disconnected-state">
+                    <i class="fas fa-wallet text-6xl text-gold mb-6 pulse-gold"></i>
+                    <h3 class="text-2xl font-bold mb-4">Connect Your Wallet</h3>
+                    <p class="text-gray-400 mb-8">
+                        To access exclusive Web3 features, please connect your Ethereum-compatible wallet.
+                    </p>
+                </div>
+                
+                <div id="connected-state" class="hidden">
+                    <i class="fas fa-check-circle text-6xl text-green-500 mb-6 success-animation"></i>
+                    <h3 class="text-2xl font-bold mb-4">Wallet Connected!</h3>
+                    <p class="text-gray-400 mb-6">Welcome to Sultan's Feast Web3 experience.</p>
+                </div>
+                
+                <div id="loading-state" class="hidden">
+                    <i class="fas fa-spinner text-6xl text-gold mb-6 loading-spinner"></i>
+                    <h3 class="text-2xl font-bold mb-4">Connecting...</h3>
+                    <p class="text-gray-400 mb-8">Please approve the connection request in your wallet.</p>
+                </div>
+            </div>
+            
+            <!-- Connect Button -->
+            <div class="text-center mb-8">
+                <button id="connect-wallet-btn" class="btn-gold text-gray-900 px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center space-x-3">
+                    <i class="fas fa-plug"></i>
+                    <span>Connect Wallet</span>
+                </button>
+                
+                <button id="disconnect-wallet-btn" class="hidden bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center space-x-3 transition-all">
+                    <i class="fas fa-unlink"></i>
+                    <span>Disconnect</span>
+                </button>
+            </div>
+            
+            <!-- Wallet Information -->
+            <div id="wallet-info" class="hidden slide-in">
+                <div class="bg-gray-800 rounded-lg p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">Wallet Address:</span>
+                        <span id="wallet-address" class="text-gold font-mono text-sm"></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">Network:</span>
+                        <span id="network-info" class="text-green-400 flex items-center"></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">ETH Balance:</span>
+                        <span id="eth-balance" class="text-blue-400"></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">NFT Status:</span>
+                        <span id="nft-status" class="text-yellow-400">Checking...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Error Message -->
+            <div id="error-message" class="hidden bg-red-900 border border-red-700 text-red-300 px-4 py-3 rounded-lg text-center">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <span id="error-text">Something went wrong. Please try again.</span>
+            </div>
+            
+            <!-- MetaMask Installation Prompt -->
+            <div id="install-metamask" class="hidden text-center">
+                <div class="bg-orange-900 border border-orange-700 text-orange-300 px-6 py-4 rounded-lg mb-6">
+                    <i class="fas fa-download mr-2"></i>
+                    <span>MetaMask wallet not detected. Please install MetaMask to continue.</span>
+                </div>
+                <a href="https://metamask.io/download/" target="_blank" rel="noopener noreferrer" 
+                   class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-full font-semibold inline-flex items-center space-x-2 transition-all">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Install MetaMask</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Features Preview -->
+        <div id="features-preview" class="hidden slide-in">
+            <h3 class="text-3xl font-bold text-center mb-12">
+                Unlock <span class="text-gold">Web3 Features</span>
+            </h3>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- NFT Benefits -->
+                <div class="wallet-card rounded-xl p-6 text-center">
+                    <i class="fas fa-gem text-4xl text-gold mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-3">NFT Benefits</h4>
+                    <p class="text-gray-400 text-sm">
+                        Exclusive perks for Sultan's VIP NFT holders including priority reservations and special discounts.
+                    </p>
+                </div>
+                
+                <!-- Crypto Payments -->
+                <div class="wallet-card rounded-xl p-6 text-center">
+                    <i class="fab fa-ethereum text-4xl text-blue-400 mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-3">Crypto Payments</h4>
+                    <p class="text-gray-400 text-sm">
+                        Pay for your dining experience using Ethereum, stablecoins, or other supported cryptocurrencies.
+                    </p>
+                </div>
+                
+                <!-- Decentralized Experience -->
+                <div class="wallet-card rounded-xl p-6 text-center">
+                    <i class="fas fa-network-wired text-4xl text-purple-400 mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-3">Decentralized Access</h4>
+                    <p class="text-gray-400 text-sm">
+                        Access our IPFS-hosted website and participate in the decentralized dining ecosystem.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Info -->
+        <div class="text-center mt-16 text-gray-500">
+            <p class="mb-4">
+                <i class="fas fa-shield-alt mr-2"></i>
+                Your wallet connection is secure and private. We never store your private keys.
+            </p>
+            <p class="text-sm">
+                Supported wallets: MetaMask, WalletConnect, Coinbase Wallet, and more.
+            </p>
+        </div>
+        
+    </main>
+    
+    <!-- JavaScript -->
+    <script>
+        // Web3 Wallet Connection Manager
+        class WalletManager {
+            constructor() {
+                this.provider = null;
+                this.signer = null;
+                this.userAddress = null;
+                this.chainId = null;
+                this.isConnected = false;
+                
+                this.init();
+            }
+            
+            // Initialize the wallet manager
+            init() {
+                this.checkWalletAvailability();
+                this.setupEventListeners();
+                this.checkExistingConnection();
+            }
+            
+            // Check if MetaMask or other wallet is available
+            checkWalletAvailability() {
+                if (typeof window.ethereum === 'undefined') {
+                    this.showInstallPrompt();
+                    return false;
+                }
+                return true;
+            }
+            
+            // Set up event listeners
+            setupEventListeners() {
+                const connectBtn = document.getElementById('connect-wallet-btn');
+                const disconnectBtn = document.getElementById('disconnect-wallet-btn');
+                
+                connectBtn.addEventListener('click', () => this.connectWallet());
+                disconnectBtn.addEventListener('click', () => this.disconnectWallet());
+                
+                // Listen for account changes
+                if (window.ethereum) {
+                    window.ethereum.on('accountsChanged', (accounts) => {
+                        if (accounts.length === 0) {
+                            this.handleDisconnection();
+                        } else {
+                            this.updateWalletInfo(accounts[0]);
+                        }
+                    });
+                    
+                    // Listen for network changes
+                    window.ethereum.on('chainChanged', (chainId) => {
+                        this.chainId = parseInt(chainId, 16);
+                        this.updateNetworkInfo();
+                    });
+                }
+            }
+            
+            // Check for existing wallet connection
+            async checkExistingConnection() {
+                if (!this.checkWalletAvailability()) return;
+                
+                try {
+                    const accounts = await window.ethereum.request({ 
+                        method: 'eth_accounts' 
+                    });
+                    
+                    if (accounts.length > 0) {
+                        await this.connectWallet(false);
+                    }
+                } catch (error) {
+                    console.log('No existing connection found');
+                }
+            }
+            
+            // Connect to wallet
+            async connectWallet(requestPermission = true) {
+                if (!this.checkWalletAvailability()) return;
+                
+                try {
+                    this.showLoadingState();
+                    
+                    let accounts;
+                    if (requestPermission) {
+                        // Request account access
+                        accounts = await window.ethereum.request({
+                            method: 'eth_requestAccounts'
+                        });
+                    } else {
+                        // Check existing accounts
+                        accounts = await window.ethereum.request({
+                            method: 'eth_accounts'
+                        });
+                    }
+                    
+                    if (accounts.length === 0) {
+                        throw new Error('No accounts found');
+                    }
+                    
+                    // Initialize ethers provider
+                    this.provider = new ethers.providers.Web3Provider(window.ethereum);
+                    this.signer = this.provider.getSigner();
+                    this.userAddress = accounts[0];
+                    this.isConnected = true;
+                    
+                    // Get chain ID
+                    const network = await this.provider.getNetwork();
+                    this.chainId = network.chainId;
+                    
+                    // Update UI
+                    await this.updateWalletInfo(this.userAddress);
+                    this.showConnectedState();
+                    
+                    console.log('Wallet connected successfully:', this.userAddress);
+                    
+                } catch (error) {
+                    console.error('Wallet connection failed:', error);
+                    this.showError(this.getErrorMessage(error));
+                    this.showDisconnectedState();
+                }
+            }
+            
+            // Disconnect wallet
+            disconnectWallet() {
+                this.handleDisconnection();
+            }
+            
+            // Handle disconnection
+            handleDisconnection() {
+                this.provider = null;
+                this.signer = null;
+                this.userAddress = null;
+                this.chainId = null;
+                this.isConnected = false;
+                
+                this.showDisconnectedState();
+                console.log('Wallet disconnected');
+            }
+            
+            // Update wallet information display
+            async updateWalletInfo(address) {
+                try {
+                    // Update address display
+                    const addressElement = document.getElementById('wallet-address');
+                    addressElement.textContent = this.formatAddress(address);
+                    
+                    // Update network info
+                    this.updateNetworkInfo();
+                    
+                    // Get and display balance
+                    const balance = await this.provider.getBalance(address);
+                    const ethBalance = ethers.utils.formatEther(balance);
+                    document.getElementById('eth-balance').textContent = 
+                        `${parseFloat(ethBalance).toFixed(4)} ETH`;
+                    
+                    // Check NFT status (simulated)
+                    this.checkNFTStatus();
+                    
+                } catch (error) {
+                    console.error('Error updating wallet info:', error);
+                }
+            }
+            
+            // Update network information
+            updateNetworkInfo() {
+                const networkElement = document.getElementById('network-info');
+                let networkName, indicatorClass;
+                
+                switch (this.chainId) {
+                    case 1:
+                        networkName = 'Ethereum Mainnet';
+                        indicatorClass = 'network-ethereum';
+                        break;
+                    case 137:
+                        networkName = 'Polygon';
+                        indicatorClass = 'network-polygon';
+                        break;
+                    case 5:
+                        networkName = 'Ethereum Goerli';
+                        indicatorClass = 'network-ethereum';
+                        break;
+                    default:
+                        networkName = `Network ${this.chainId}`;
+                        indicatorClass = 'network-unknown';
+                }
+                
+                networkElement.innerHTML = `
+                    <span class="network-indicator ${indicatorClass}"></span>
+                    ${networkName}
+                `;
+            }
+            
+            // Check NFT status (simulated)
+            async checkNFTStatus() {
+                const nftStatusElement = document.getElementById('nft-status');
+                
+                // Simulate NFT checking delay
+                setTimeout(() => {
+                    // For demo purposes, randomly assign NFT status
+                    const hasNFT = Math.random() > 0.7;
+                    
+                    if (hasNFT) {
+                        nftStatusElement.innerHTML = `
+                            <span class="text-gold">
+                                <i class="fas fa-crown mr-1"></i>
+                                Gold VIP Member
+                            </span>
+                        `;
+                    } else {
+                        nftStatusElement.innerHTML = `
+                            <span class="text-gray-400">
+                                <i class="fas fa-times mr-1"></i>
+                                No VIP NFT
+                            </span>
+                        `;
+                    }
+                }, 2000);
+            }
+            
+            // Format wallet address for display
+            formatAddress(address) {
+                return `${address.slice(0, 6)}...${address.slice(-4)}`;
+            }
+            
+            // Get user-friendly error message
+            getErrorMessage(error) {
+                if (error.code === 4001) {
+                    return 'Connection request was rejected. Please try again.';
+                } else if (error.code === -32002) {
+                    return 'Connection request is already pending. Please check your wallet.';
+                } else {
+                    return error.message || 'An unexpected error occurred.';
+                }
+            }
+            
+            // UI State Management
+            showLoadingState() {
+                document.getElementById('disconnected-state').classList.add('hidden');
+                document.getElementById('connected-state').classList.add('hidden');
+                document.getElementById('loading-state').classList.remove('hidden');
+                document.getElementById('connect-wallet-btn').disabled = true;
+                this.hideError();
+            }
+            
+            showConnectedState() {
+                document.getElementById('disconnected-state').classList.add('hidden');
+                document.getElementById('loading-state').classList.add('hidden');
+                document.getElementById('connected-state').classList.remove('hidden');
+                
+                document.getElementById('connect-wallet-btn').classList.add('hidden');
+                document.getElementById('disconnect-wallet-btn').classList.remove('hidden');
+                document.getElementById('wallet-info').classList.remove('hidden');
+                document.getElementById('features-preview').classList.remove('hidden');
+                
+                this.hideError();
+            }
+            
+            showDisconnectedState() {
+                document.getElementById('connected-state').classList.add('hidden');
+                document.getElementById('loading-state').classList.add('hidden');
+                document.getElementById('disconnected-state').classList.remove('hidden');
+                
+                document.getElementById('connect-wallet-btn').classList.remove('hidden');
+                document.getElementById('disconnect-wallet-btn').classList.add('hidden');
+                document.getElementById('wallet-info').classList.add('hidden');
+                document.getElementById('features-preview').classList.add('hidden');
+                document.getElementById('connect-wallet-btn').disabled = false;
+                
+                this.hideError();
+            }
+            
+            showInstallPrompt() {
+                document.getElementById('disconnected-state').classList.add('hidden');
+                document.getElementById('install-metamask').classList.remove('hidden');
+                document.getElementById('connect-wallet-btn').disabled = true;
+            }
+            
+            showError(message) {
+                const errorElement = document.getElementById('error-message');
+                const errorText = document.getElementById('error-text');
+                
+                errorText.textContent = message;
+                errorElement.classList.remove('hidden');
+                
+                // Auto-hide error after 5 seconds
+                setTimeout(() => {
+                    this.hideError();
+                }, 5000);
+            }
+            
+            hideError() {
+                document.getElementById('error-message').classList.add('hidden');
+            }
+        }
+        
+        // Initialize wallet manager when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing Sultan\'s Feast Web3 Wallet Connection...');
+            window.walletManager = new WalletManager();
+        });
+        
+        // Utility functions for future Web3 integrations
+        window.SultansWeb3Utils = {
+            // Check if user has specific NFT (placeholder)
+            async checkNFTOwnership(contractAddress, userAddress) {
+                // Implementation would go here
+                console.log('Checking NFT ownership for:', userAddress);
+                return false; // Placeholder
+            },
+            
+            // Process crypto payment (placeholder)
+            async processCryptoPayment(amount, currency) {
+                // Implementation would go here
+                console.log('Processing payment:', amount, currency);
+                return { success: false, txHash: null }; // Placeholder
+            },
+            
+            // Get user's Web3 status summary
+            getWeb3Status() {
+                if (!window.walletManager.isConnected) {
+                    return { connected: false };
+                }
+                
+                return {
+                    connected: true,
+                    address: window.walletManager.userAddress,
+                    network: window.walletManager.chainId,
+                    provider: 'MetaMask' // Simplified
+                };
+            }
+        };
+    </script>
+</body>
+</html>
