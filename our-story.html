@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Sultan's Feast</title>
+    <meta name="description" content="Discover the heritage and passion behind Sultan's Feast. Three generations of authentic Turkish cuisine, from a small family kitchen in Gaziantep to the heart of the city.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
+                            url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .text-gold {
+            color: #D4AF37;
+        }
+        
+        .border-gold {
+            border-color: #D4AF37;
+        }
+        
+        .hover-gold:hover {
+            color: #FFD700;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37, #FFD700);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #FFD700, #D4AF37);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .mobile-menu-slide {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu-slide.active {
+            transform: translateX(0);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .fade-in-delay {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+        
+        .fade-in-delay-2 {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .gallery-image {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .timeline-item {
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: #D4AF37;
+            border-radius: 50%;
+            border: 3px solid #1f2937;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% + 2rem);
+            background: #D4AF37;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .parallax-text {
+            transform: translateY(0);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .quote-style {
+            position: relative;
+            font-style: italic;
+        }
+        
+        .quote-style::before {
+            content: '"';
+            font-size: 4rem;
+            color: #D4AF37;
+            position: absolute;
+            left: -2rem;
+            top: -1rem;
+            font-family: serif;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 215, 0, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white scroll-smooth">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 bg-opacity-95 nav-blur shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl lg:text-3xl font-bold text-gold hover-gold transition-colors">
+                        Sultan's Feast
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="text-white hover-gold font-medium transition-colors">Homepage</a>
+                    <a href="menu.html" class="text-white hover-gold font-medium transition-colors">Menu</a>
+                    <a href="our-story.html" class="text-gold font-medium transition-colors">Our Story</a>
+                    <a href="contact.html" class="text-white hover-gold font-medium transition-colors">Contact</a>
+                    <a href="index.html#reservation" class="btn-gold text-gray-900 px-6 py-2 rounded-full font-semibold">
+                        Reservation
+                    </a>
+                    <div class="flex items-center space-x-2 text-sm">
+                        <span class="text-gold cursor-pointer hover:text-yellow-300">TR</span>
+                        <span class="text-gray-400">/</span>
+                        <span class="text-white cursor-pointer hover:text-gray-300">EN</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-gold transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="lg:hidden mobile-menu-slide fixed top-0 left-0 w-full h-screen bg-gray-900 nav-blur z-40">
+            <div class="flex flex-col justify-center items-center h-full space-y-8 text-center">
+                <button id="mobile-menu-close" class="absolute top-6 right-6 text-white hover:text-gold transition-colors">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                
+                <a href="index.html" class="text-2xl text-white hover-gold font-medium transition-colors">Homepage</a>
+                <a href="menu.html" class="text-2xl text-white hover-gold font-medium transition-colors">Menu</a>
+                <a href="our-story.html" class="text-2xl text-gold font-medium transition-colors">Our Story</a>
+                <a href="contact.html" class="text-2xl text-white hover-gold font-medium transition-colors">Contact</a>
+                <a href="index.html#reservation" class="btn-gold text-gray-900 px-8 py-3 rounded-full font-semibold text-lg">
+                    Reservation
+                </a>
+                <div class="flex items-center space-x-4 text-lg">
+                    <span class="text-gold cursor-pointer hover:text-yellow-300">TR</span>
+                    <span class="text-gray-400">/</span>
+                    <span class="text-white cursor-pointer hover:text-gray-300">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Banner -->
+    <section class="hero-bg h-screen flex items-center justify-center relative">
+        <div class="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 fade-in">
+                Our <span class="text-gold">Story</span>
+            </h1>
+            <p class="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto fade-in-delay">
+                Three generations of culinary excellence, from the ancient streets of Gaziantep to the heart of the modern city
+            </p>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-gold text-2xl"></i>
+        </div>
+    </section>
+    
+    <!-- Main Story Content -->
+    <section class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <!-- Story Narrative Column -->
+                <div class="space-y-8">
+                    <div class="fade-in">
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+                            From Humble <span class="text-gold">Beginnings</span>
+                        </h2>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                            In 1952, in a small family kitchen nestled in the ancient city of Gaziantep, our grandfather Mehmet began what would become a culinary legacy. With nothing but traditional recipes passed down through generations and an unwavering commitment to authenticity, he started preparing kebabs for local families and neighbors.
+                        </p>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            What started as a humble endeavor to share the rich flavors of Anatolian cuisine soon grew into something much greater. Word spread throughout the narrow cobblestone streets about the extraordinary taste of Mehmet's kebabs, each one crafted with hand-selected spices and cooked over glowing charcoal.
+                        </p>
+                    </div>
+                    
+                    <div class="fade-in-delay">
+                        <h3 class="text-2xl font-bold mb-4 text-gold">A Philosophy Rooted in Tradition</h3>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                            Our culinary philosophy remains unchanged: respect for the ingredient, mastery of technique, and an unwavering commitment to authenticity. Every spice is sourced from the same regions our grandfather visited, every recipe follows his handwritten notes, and every dish is prepared with the same passion that ignited our family's journey.
+                        </p>
+                        
+                        <blockquote class="quote-style text-xl text-gray-200 mb-6 pl-8">
+                            Food is not just sustenance—it is memory, culture, and love served on a plate. When you taste our kebabs, you taste three generations of dedication.
+                        </blockquote>
+                        
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            Today, Sultan's Feast stands as a bridge between the time-honored traditions of Turkish cuisine and the sophisticated palates of modern diners. We honor our heritage while embracing innovation, creating an experience that is both authentically Turkish and uniquely contemporary.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Image Gallery Column -->
+                <div class="space-y-6 fade-in-delay-2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Traditional Turkish kitchen" 
+                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Master chef preparing kebabs" 
+                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg">
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Traditional spices and ingredients" 
+                         class="gallery-image w-full h-64 object-cover rounded-lg shadow-lg">
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1560624052-449f5ddf0c31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Restaurant ambiance" 
+                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Family legacy" 
+                             class="gallery-image w-full h-48 object-cover rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    Our <span class="text-gold">Journey</span>
+                </h2>
+                <p class="text-gray-300 text-lg">Seven decades of culinary excellence and family tradition</p>
+            </div>
+            
+            <div class="relative pl-8">
+                <div class="timeline-item mb-12 fade-in">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gold mb-2">1952 - The Beginning</h3>
+                        <p class="text-gray-300">Mehmet opens his first small kitchen in Gaziantep, serving traditional kebabs to local families with recipes passed down through generations.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item mb-12 fade-in-delay">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gold mb-2">1978 - Growing Recognition</h3>
+                        <p class="text-gray-300">The family opens their first formal restaurant, gaining recognition for authentic Anatolian cuisine and becoming a destination for food lovers across the region.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item mb-12 fade-in-delay-2">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gold mb-2">1995 - Second Generation</h3>
+                        <p class="text-gray-300">Mehmet's son Ahmet takes over the business, expanding the menu while maintaining traditional cooking methods and introducing modern dining experiences.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item mb-12 fade-in">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gold mb-2">2018 - Urban Expansion</h3>
+                        <p class="text-gray-300">The family opens Sultan's Feast in the heart of the city, bringing their heritage recipes to urban food enthusiasts while maintaining authenticity.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in-delay">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gold mb-2">2024 - Modern Legacy</h3>
+                        <p class="text-gray-300">The third generation continues the tradition, blending time-honored recipes with contemporary presentation, ensuring our legacy lives on for future generations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="stats-card text-center p-6 rounded-lg">
+                    <div class="text-4xl font-bold text-gold mb-2">72</div>
+                    <p class="text-gray-300 font-medium">Years of Tradition</p>
+                </div>
+                <div class="stats-card text-center p-6 rounded-lg">
+                    <div class="text-4xl font-bold text-gold mb-2">3</div>
+                    <p class="text-gray-300 font-medium">Generations</p>
+                </div>
+                <div class="stats-card text-center p-6 rounded-lg">
+                    <div class="text-4xl font-bold text-gold mb-2">50,000+</div>
+                    <p class="text-gray-300 font-medium">Happy Guests</p>
+                </div>
+                <div class="stats-card text-center p-6 rounded-lg">
+                    <div class="text-4xl font-bold text-gold mb-2">12</div>
+                    <p class="text-gray-300 font-medium">Traditional Spices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Values Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    Our <span class="text-gold">Values</span>
+                </h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    The principles that guide everything we do, from sourcing ingredients to serving our guests
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-6 fade-in">
+                    <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-2xl text-gray-900"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gold">Authenticity</h3>
+                    <p class="text-gray-300">Every recipe, every spice, every technique stays true to our Anatolian roots and family traditions.</p>
+                </div>
+                
+                <div class="text-center p-6 fade-in-delay">
+                    <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-2xl text-gray-900"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gold">Quality</h3>
+                    <p class="text-gray-300">We source only the finest ingredients, from hand-selected spices to premium meats, ensuring excellence in every bite.</p>
+                </div>
+                
+                <div class="text-center p-6 fade-in-delay-2">
+                    <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-gray-900"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gold">Family</h3>
+                    <p class="text-gray-300">Our restaurant is an extension of our family, and every guest is welcomed with warmth and genuine hospitality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+                Experience Our <span class="text-gold">Legacy</span>
+            </h2>
+            <p class="text-gray-300 text-lg mb-8">
+                Join us for a dining experience that celebrates three generations of culinary mastery. 
+                Every meal tells our story, every bite connects you to our heritage.
+            </p>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-6 sm:flex sm:justify-center">
+                <a href="menu.html" class="btn-gold text-gray-900 px-8 py-4 rounded-full font-semibold text-lg inline-block">
+                    <i class="fas fa-utensils mr-2"></i>
+                    Explore Our Menu
+                </a>
+                <a href="index.html#reservation" class="border-2 border-gold text-gold px-8 py-4 rounded-full font-semibold text-lg inline-block hover:bg-gold hover:text-gray-900 transition-all duration-300">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    Book Your Table
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 py-16 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-2xl font-bold text-gold mb-4">Sultan's Feast</h3>
+                    <p class="text-gray-300 mb-6">
+                        Where traditional Turkish cuisine meets modern elegance. 
+                        Experience the authentic flavors that have been passed down through generations.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gold">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Homepage</a></li>
+                        <li><a href="menu.html" class="text-gray-300 hover:text-gold transition-colors">Menu</a></li>
+                        <li><a href="our-story.html" class="text-gray-300 hover:text-gold transition-colors">Our Story</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gold">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-gold mr-2"></i>
+                            123 Gourmet Street, Downtown
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-2"></i>
+                            (555) 123-FEAST
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-gold mr-2"></i>
+                            info@sultansfeast.com
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Opening Hours -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gold">Opening Hours</h4>
+                    <ul class="space-y-1 text-gray-300 text-sm">
+                        <li class="flex justify-between">
+                            <span>Mon - Thu:</span>
+                            <span>11:30 AM - 10:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Fri - Sat:</span>
+                            <span>11:30 AM - 11:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday:</span>
+                            <span>12:00 PM - 9:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Sultan's Feast. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu functionality
+        function initializeMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('active');
+                document.body.classList.toggle('overflow-hidden');
+            }
+            
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            mobileMenuClose.addEventListener('click', toggleMobileMenu);
+            
+            // Close mobile menu when clicking on links
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+        }
+        
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-bg');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize mobile menu
+            initializeMobileMenu();
+            
+            // Observe elements for scroll animations
+            document.querySelectorAll('.fade-in, .fade-in-delay, .fade-in-delay-2').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Gallery image loading effects
+            document.querySelectorAll('.gallery-image').forEach(img => {
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

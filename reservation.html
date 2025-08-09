@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Reservation - Sultan's Feast</title>
+    <meta name="description" content="Reserve your table at Sultan's Feast. Book online for an unforgettable Turkish dining experience with authentic flavors and contemporary elegance.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .reservation-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), 
+                            url('https://images.unsplash.com/photo-1560624052-449f5ddf0c31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .text-gold {
+            color: #D4AF37;
+        }
+        
+        .border-gold {
+            border-color: #D4AF37;
+        }
+        
+        .hover-gold:hover {
+            color: #FFD700;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37, #FFD700);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #FFD700, #D4AF37);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .mobile-menu-slide {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu-slide.active {
+            transform: translateX(0);
+        }
+        
+        .form-container {
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        .form-input {
+            background: rgba(55, 65, 81, 0.8);
+            border: 2px solid rgba(107, 114, 128, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            outline: none;
+            background: rgba(55, 65, 81, 0.95);
+        }
+        
+        .form-input.error {
+            border-color: #EF4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+        
+        .form-input.success {
+            border-color: #10B981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .floating-label {
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .form-input:focus + .floating-label,
+        .form-input:not(:placeholder-shown) + .floating-label {
+            transform: translateY(-1.5rem) scale(0.875);
+            color: #D4AF37;
+        }
+        
+        .error-message {
+            color: #EF4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .error-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .success-container {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .fade-in-delay {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .time-slot {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .time-slot:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: #D4AF37;
+        }
+        
+        .time-slot.selected {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+        
+        .time-slot.unavailable {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba(107, 114, 128, 0.1);
+        }
+        
+        .guest-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .guest-option {
+            padding: 0.75rem;
+            border: 2px solid rgba(107, 114, 128, 0.3);
+            border-radius: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(55, 65, 81, 0.8);
+        }
+        
+        .guest-option:hover {
+            border-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .guest-option.selected {
+            border-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+            font-weight: 600;
+        }
+        
+        .step-indicator {
+            background: rgba(55, 65, 81, 0.8);
+            border: 1px solid rgba(107, 114, 128, 0.3);
+        }
+        
+        .step-indicator.active {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+        }
+        
+        .step-indicator.completed {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10B981;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white scroll-smooth">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 bg-opacity-95 nav-blur shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl lg:text-3xl font-bold text-gold hover-gold transition-colors">
+                        Sultan's Feast
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="text-white hover-gold font-medium transition-colors">Homepage</a>
+                    <a href="menu.html" class="text-white hover-gold font-medium transition-colors">Menu</a>
+                    <a href="our-story.html" class="text-white hover-gold font-medium transition-colors">Our Story</a>
+                    <a href="contact.html" class="text-white hover-gold font-medium transition-colors">Contact</a>
+                    <a href="reservation.html" class="text-gold font-medium transition-colors">Reservation</a>
+                    <div class="flex items-center space-x-2 text-sm">
+                        <span class="text-gold cursor-pointer hover:text-yellow-300">TR</span>
+                        <span class="text-gray-400">/</span>
+                        <span class="text-white cursor-pointer hover:text-gray-300">EN</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-gold transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="lg:hidden mobile-menu-slide fixed top-0 left-0 w-full h-screen bg-gray-900 nav-blur z-40">
+            <div class="flex flex-col justify-center items-center h-full space-y-8 text-center">
+                <button id="mobile-menu-close" class="absolute top-6 right-6 text-white hover:text-gold transition-colors">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                
+                <a href="index.html" class="text-2xl text-white hover-gold font-medium transition-colors">Homepage</a>
+                <a href="menu.html" class="text-2xl text-white hover-gold font-medium transition-colors">Menu</a>
+                <a href="our-story.html" class="text-2xl text-white hover-gold font-medium transition-colors">Our Story</a>
+                <a href="contact.html" class="text-2xl text-white hover-gold font-medium transition-colors">Contact</a>
+                <a href="reservation.html" class="text-2xl text-gold font-medium transition-colors">Reservation</a>
+                <div class="flex items-center space-x-4 text-lg">
+                    <span class="text-gold cursor-pointer hover:text-yellow-300">TR</span>
+                    <span class="text-gray-400">/</span>
+                    <span class="text-white cursor-pointer hover:text-gray-300">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Reservation Content -->
+    <main class="reservation-bg pt-20">
+        <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl w-full">
+                <!-- Header -->
+                <div class="text-center mb-8 fade-in">
+                    <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+                        Reserve Your <span class="text-gold">Table</span>
+                    </h1>
+                    <p class="text-lg text-gray-300 max-w-xl mx-auto">
+                        Experience the finest Turkish cuisine in an atmosphere of contemporary elegance. 
+                        Book your table for an unforgettable dining journey.
+                    </p>
+                </div>
+                
+                <!-- Step Indicator -->
+                <div class="flex justify-center mb-8 fade-in-delay">
+                    <div class="flex space-x-4">
+                        <div class="step-indicator active px-4 py-2 rounded-full text-sm font-medium">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            Book Table
+                        </div>
+                        <div class="step-indicator px-4 py-2 rounded-full text-sm font-medium">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            Confirmation
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reservation Form -->
+                <div id="reservation-form-container" class="form-container rounded-2xl p-8 shadow-2xl fade-in-delay">
+                    <form id="reservation-form" class="space-y-6">
+                        <!-- Number of Guests -->
+                        <div>
+                            <label class="block text-gold font-semibold mb-3">
+                                <i class="fas fa-users mr-2"></i>
+                                Number of Guests *
+                            </label>
+                            <div class="guest-selector">
+                                <div class="guest-option" data-guests="1">1</div>
+                                <div class="guest-option" data-guests="2">2</div>
+                                <div class="guest-option" data-guests="3">3</div>
+                                <div class="guest-option" data-guests="4">4</div>
+                                <div class="guest-option" data-guests="5">5</div>
+                                <div class="guest-option" data-guests="6">6</div>
+                                <div class="guest-option" data-guests="7">7</div>
+                                <div class="guest-option" data-guests="8">8</div>
+                                <div class="guest-option" data-guests="9">9</div>
+                                <div class="guest-option" data-guests="10+">10+</div>
+                            </div>
+                            <input type="hidden" id="guests" name="guests" required>
+                            <div class="error-message" id="guests-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Please select the number of guests</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Date Selection -->
+                        <div>
+                            <label for="date" class="block text-gold font-semibold mb-3">
+                                <i class="fas fa-calendar mr-2"></i>
+                                Preferred Date *
+                            </label>
+                            <input type="date" 
+                                   id="date" 
+                                   name="date" 
+                                   class="form-input w-full px-4 py-3 rounded-lg text-white"
+                                   required>
+                            <div class="error-message" id="date-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Please select a future date</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Time Selection -->
+                        <div>
+                            <label class="block text-gold font-semibold mb-3">
+                                <i class="fas fa-clock mr-2"></i>
+                                Preferred Time *
+                            </label>
+                            <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="17:30">5:30 PM</div>
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="18:00">6:00 PM</div>
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="18:30">6:30 PM</div>
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="19:00">7:00 PM</div>
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="19:30">7:30 PM</div>
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="20:00">8:00 PM</div>
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="20:30">8:30 PM</div>
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="21:00">9:00 PM</div>
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="21:30">9:30 PM</div>
+                                <div class="time-slot border-2 border-gray-600 rounded-lg p-3 text-center text-sm" data-time="22:00">10:00 PM</div>
+                            </div>
+                            <input type="hidden" id="time" name="time" required>
+                            <div class="error-message" id="time-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Please select a preferred time</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Personal Information -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Full Name -->
+                            <div class="relative">
+                                <input type="text" 
+                                       id="fullName" 
+                                       name="fullName" 
+                                       class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent peer" 
+                                       placeholder="Full Name"
+                                       required>
+                                <label for="fullName" class="floating-label absolute left-4 top-3 text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-gold peer-focus:text-sm">
+                                    <i class="fas fa-user mr-1"></i>
+                                    Full Name *
+                                </label>
+                                <div class="error-message" id="fullName-error">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <span>Please enter your full name</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Phone Number -->
+                            <div class="relative">
+                                <input type="tel" 
+                                       id="phone" 
+                                       name="phone" 
+                                       class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent peer" 
+                                       placeholder="Phone Number"
+                                       required>
+                                <label for="phone" class="floating-label absolute left-4 top-3 text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-gold peer-focus:text-sm">
+                                    <i class="fas fa-phone mr-1"></i>
+                                    Phone Number *
+                                </label>
+                                <div class="error-message" id="phone-error">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <span>Please enter a valid phone number</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Address -->
+                        <div class="relative">
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent peer" 
+                                   placeholder="Email Address"
+                                   required>
+                            <label for="email" class="floating-label absolute left-4 top-3 text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-gold peer-focus:text-sm">
+                                <i class="fas fa-envelope mr-1"></i>
+                                Email Address *
+                            </label>
+                            <div class="error-message" id="email-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Please enter a valid email address</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Special Requests -->
+                        <div class="relative">
+                            <textarea id="specialRequests" 
+                                      name="specialRequests" 
+                                      rows="4" 
+                                      class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent peer resize-none" 
+                                      placeholder="Special Requests"></textarea>
+                            <label for="specialRequests" class="floating-label absolute left-4 top-3 text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-gold peer-focus:text-sm">
+                                <i class="fas fa-comment mr-1"></i>
+                                Special Requests (Optional)
+                            </label>
+                            <p class="text-gray-400 text-sm mt-2">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                Birthday celebration, dietary restrictions, seating preferences, etc.
+                            </p>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" 
+                                id="submit-btn"
+                                class="btn-gold w-full text-gray-900 py-4 rounded-lg font-semibold text-lg flex items-center justify-center mt-8">
+                            <span id="btn-text">
+                                <i class="fas fa-calendar-check mr-2"></i>
+                                Request Reservation
+                            </span>
+                            <span id="btn-loading" class="hidden">
+                                <i class="fas fa-spinner loading-spinner mr-2"></i>
+                                Processing...
+                            </span>
+                        </button>
+                        
+                        <p class="text-gray-400 text-sm text-center mt-4">
+                            <i class="fas fa-shield-alt mr-1"></i>
+                            Your information is secure and will only be used for reservation purposes.
+                        </p>
+                    </form>
+                </div>
+                
+                <!-- Success Message -->
+                <div id="success-container" class="success-container rounded-2xl p-8 shadow-2xl hidden">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-check text-3xl text-white"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4 text-green-400">
+                            Reservation Request Sent!
+                        </h2>
+                        <p class="text-lg text-gray-300 mb-6 max-w-md mx-auto">
+                            Thank you for choosing Sultan's Feast! Your reservation request has been received. 
+                            We will contact you shortly to confirm your booking.
+                        </p>
+                        
+                        <!-- Reservation Summary -->
+                        <div class="bg-gray-800 rounded-lg p-6 mb-6">
+                            <h3 class="text-xl font-semibold mb-4 text-gold">
+                                <i class="fas fa-receipt mr-2"></i>
+                                Reservation Summary
+                            </h3>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="text-gray-400">Guests:</div>
+                                <div class="text-white font-medium" id="summary-guests"></div>
+                                <div class="text-gray-400">Date:</div>
+                                <div class="text-white font-medium" id="summary-date"></div>
+                                <div class="text-gray-400">Time:</div>
+                                <div class="text-white font-medium" id="summary-time"></div>
+                                <div class="text-gray-400">Name:</div>
+                                <div class="text-white font-medium" id="summary-name"></div>
+                                <div class="text-gray-400">Phone:</div>
+                                <div class="text-white font-medium" id="summary-phone"></div>
+                                <div class="text-gray-400">Email:</div>
+                                <div class="text-white font-medium" id="summary-email"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+                            <button onclick="makeAnotherReservation()" 
+                                    class="btn-gold text-gray-900 px-6 py-3 rounded-full font-semibold inline-block">
+                                <i class="fas fa-plus mr-2"></i>
+                                Make Another Reservation
+                            </button>
+                            <a href="menu.html" 
+                               class="border-2 border-gold text-gold px-6 py-3 rounded-full font-semibold inline-block hover:bg-gold hover:text-gray-900 transition-all duration-300">
+                                <i class="fas fa-utensils mr-2"></i>
+                                View Our Menu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-16 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-2xl font-bold text-gold mb-4">Sultan's Feast</h3>
+                    <p class="text-gray-300 mb-6">
+                        Where traditional Turkish cuisine meets modern elegance. 
+                        Experience the authentic flavors that have been passed down through generations.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gold">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Homepage</a></li>
+                        <li><a href="menu.html" class="text-gray-300 hover:text-gold transition-colors">Menu</a></li>
+                        <li><a href="our-story.html" class="text-gray-300 hover:text-gold transition-colors">Our Story</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gold">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-gold mr-2"></i>
+                            123 Gourmet Street, Downtown
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-2"></i>
+                            (555) 123-FEAST
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-gold mr-2"></i>
+                            info@sultansfeast.com
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Opening Hours -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gold">Opening Hours</h4>
+                    <ul class="space-y-1 text-gray-300 text-sm">
+                        <li class="flex justify-between">
+                            <span>Mon - Thu:</span>
+                            <span>11:30 AM - 10:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Fri - Sat:</span>
+                            <span>11:30 AM - 11:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday:</span>
+                            <span>12:00 PM - 9:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Sultan's Feast. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Global variables
+        let selectedGuests = null;
+        let selectedTime = null;
+        
+        // Mobile menu functionality
+        function initializeMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('active');
+                document.body.classList.toggle('overflow-hidden');
+            }
+            
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            mobileMenuClose.addEventListener('click', toggleMobileMenu);
+            
+            // Close mobile menu when clicking on links
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+        }
+        
+        // Guest selection functionality
+        function initializeGuestSelection() {
+            const guestOptions = document.querySelectorAll('.guest-option');
+            const guestsInput = document.getElementById('guests');
+            
+            guestOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove previous selection
+                    guestOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selection to clicked option
+                    this.classList.add('selected');
+                    
+                    // Update hidden input
+                    selectedGuests = this.dataset.guests;
+                    guestsInput.value = selectedGuests;
+                    
+                    // Clear any error
+                    clearError('guests');
+                });
+            });
+        }
+        
+        // Time selection functionality
+        function initializeTimeSelection() {
+            const timeSlots = document.querySelectorAll('.time-slot');
+            const timeInput = document.getElementById('time');
+            
+            timeSlots.forEach(slot => {
+                slot.addEventListener('click', function() {
+                    if (this.classList.contains('unavailable')) return;
+                    
+                    // Remove previous selection
+                    timeSlots.forEach(s => s.classList.remove('selected'));
+                    
+                    // Add selection to clicked slot
+                    this.classList.add('selected');
+                    
+                    // Update hidden input
+                    selectedTime = this.dataset.time;
+                    timeInput.value = selectedTime;
+                    
+                    // Clear any error
+                    clearError('time');
+                });
+            });
+        }
+        
+        // Form validation functions
+        function validateField(fieldId, customValidation = null) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(`${fieldId}-error`);
+            
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Custom validation for specific fields
+            if (customValidation) {
+                const result = customValidation(field.value);
+                isValid = result.isValid;
+                errorMessage = result.message;
+            } else {
+                // Standard validation
+                if (field.hasAttribute('required') && !field.value.trim()) {
+                    isValid = false;
+                    errorMessage = `Please enter ${field.placeholder || 'this field'}`;
+                }
+                
+                // Email validation
+                if (field.type === 'email' && field.value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(field.value)) {
+                        isValid = false;
+                        errorMessage = 'Please enter a valid email address';
+                    }
+                }
+                
+                // Phone validation
+                if (field.type === 'tel' && field.value) {
+                    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+                    if (!phoneRegex.test(field.value.replace(/[\s\-\(\)]/g, ''))) {
+                        isValid = false;
+                        errorMessage = 'Please enter a valid phone number';
+                    }
+                }
+                
+                // Date validation
+                if (field.type === 'date' && field.value) {
+                    const selectedDate = new Date(field.value);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    
+                    if (selectedDate < today) {
+                        isValid = false;
+                        errorMessage = 'Please select a future date';
+                    }
+                }
+            }
+            
+            // Update field styling and error message
+            if (isValid) {
+                field.classList.remove('error');
+                field.classList.add('success');
+                errorElement.classList.remove('show');
+            } else {
+                field.classList.remove('success');
+                field.classList.add('error');
+                errorElement.querySelector('span').textContent = errorMessage;
+                errorElement.classList.add('show');
+            }
+            
+            return isValid;
+        }
+        
+        function clearError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(`${fieldId}-error`);
+            
+            if (field) {
+                field.classList.remove('error');
+            }
+            if (errorElement) {
+                errorElement.classList.remove('show');
+            }
+        }
+        
+        // Reservation form submission
+        function initializeReservationForm() {
+            const form = document.getElementById('reservation-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnLoading = document.getElementById('btn-loading');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                btnText.classList.add('hidden');
+                btnLoading.classList.remove('hidden');
+                submitBtn.disabled = true;
+                
+                // Validate all fields
+                let isFormValid = true;
+                
+                // Validate guests
+                if (!selectedGuests) {
+                    document.getElementById('guests-error').classList.add('show');
+                    isFormValid = false;
+                } else {
+                    document.getElementById('guests-error').classList.remove('show');
+                }
+                
+                // Validate date
+                const dateValid = validateField('date');
+                isFormValid = isFormValid && dateValid;
+                
+                // Validate time
+                if (!selectedTime) {
+                    document.getElementById('time-error').classList.add('show');
+                    isFormValid = false;
+                } else {
+                    document.getElementById('time-error').classList.remove('show');
+                }
+                
+                // Validate personal information
+                const nameValid = validateField('fullName');
+                const phoneValid = validateField('phone');
+                const emailValid = validateField('email');
+                
+                isFormValid = isFormValid && nameValid && phoneValid && emailValid;
+                
+                // Simulate form processing
+                setTimeout(() => {
+                    if (isFormValid) {
+                        showSuccessPage();
+                    } else {
+                        // Reset button state
+                        btnText.classList.remove('hidden');
+                        btnLoading.classList.add('hidden');
+                        submitBtn.disabled = false;
+                        
+                        // Scroll to first error
+                        const firstError = document.querySelector('.error-message.show');
+                        if (firstError) {
+                            firstError.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'center' 
+                            });
+                        }
+                    }
+                }, 1500);
+            });
+        }
+        
+        function showSuccessPage() {
+            const formContainer = document.getElementById('reservation-form-container');
+            const successContainer = document.getElementById('success-container');
+            
+            // Update step indicator
+            const steps = document.querySelectorAll('.step-indicator');
+            steps[0].classList.remove('active');
+            steps[0].classList.add('completed');
+            steps[1].classList.add('active');
+            
+            // Hide form and show success
+            formContainer.classList.add('hidden');
+            successContainer.classList.remove('hidden');
+            
+            // Populate reservation summary
+            const formatDate = (dateString) => {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+            };
+            
+            const formatTime = (timeString) => {
+                const [hour, minute] = timeString.split(':');
+                const date = new Date();
+                date.setHours(parseInt(hour), parseInt(minute));
+                return date.toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit',
+                    hour12: true 
+                });
+            };
+            
+            document.getElementById('summary-guests').textContent = selectedGuests + (selectedGuests === '1' ? ' Guest' : ' Guests');
+            document.getElementById('summary-date').textContent = formatDate(document.getElementById('date').value);
+            document.getElementById('summary-time').textContent = formatTime(selectedTime);
+            document.getElementById('summary-name').textContent = document.getElementById('fullName').value;
+            document.getElementById('summary-phone').textContent = document.getElementById('phone').value;
+            document.getElementById('summary-email').textContent = document.getElementById('email').value;
+            
+            // Scroll to top of success container
+            successContainer.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+        
+        function makeAnotherReservation() {
+            const formContainer = document.getElementById('reservation-form-container');
+            const successContainer = document.getElementById('success-container');
+            const form = document.getElementById('reservation-form');
+            
+            // Reset step indicator
+            const steps = document.querySelectorAll('.step-indicator');
+            steps[0].classList.add('active');
+            steps[0].classList.remove('completed');
+            steps[1].classList.remove('active');
+            
+            // Show form and hide success
+            successContainer.classList.add('hidden');
+            formContainer.classList.remove('hidden');
+            
+            // Reset form
+            form.reset();
+            selectedGuests = null;
+            selectedTime = null;
+            
+            // Clear all selections and errors
+            document.querySelectorAll('.guest-option').forEach(opt => opt.classList.remove('selected'));
+            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.classList.remove('error', 'success');
+            });
+            document.querySelectorAll('.error-message').forEach(error => error.classList.remove('show'));
+            
+            // Scroll to top of form
+            formContainer.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+        
+        // Set minimum date to today
+        function setMinimumDate() {
+            const dateInput = document.getElementById('date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        }
+        
+        // Simulate dynamic time slot availability
+        function updateTimeSlotAvailability() {
+            const timeSlots = document.querySelectorAll('.time-slot');
+            const selectedDate = document.getElementById('date').value;
+            
+            if (selectedDate) {
+                const date = new Date(selectedDate);
+                const today = new Date();
+                
+                // If selected date is today, disable past time slots
+                if (date.toDateString() === today.toDateString()) {
+                    const currentHour = today.getHours();
+                    
+                    timeSlots.forEach(slot => {
+                        const slotTime = slot.dataset.time;
+                        const [hour] = slotTime.split(':').map(Number);
+                        
+                        if (hour <= currentHour) {
+                            slot.classList.add('unavailable');
+                            slot.classList.remove('selected');
+                            if (selectedTime === slotTime) {
+                                selectedTime = null;
+                                document.getElementById('time').value = '';
+                            }
+                        } else {
+                            slot.classList.remove('unavailable');
+                        }
+                    });
+                } else {
+                    // Future dates - all slots available
+                    timeSlots.forEach(slot => slot.classList.remove('unavailable'));
+                }
+            }
+        }
+        
+        // Real-time validation
+        function initializeRealTimeValidation() {
+            const inputs = document.querySelectorAll('.form-input');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', () => {
+                    if (input.value.trim()) {
+                        validateField(input.id);
+                    }
+                });
+                
+                input.addEventListener('input', () => {
+                    if (input.classList.contains('error')) {
+                        clearError(input.id);
+                    }
+                });
+            });
+            
+            // Date change handler
+            document.getElementById('date').addEventListener('change', updateTimeSlotAvailability);
+        }
+        
+        // Initialize all functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMobileMenu();
+            initializeGuestSelection();
+            initializeTimeSelection();
+            initializeReservationForm();
+            initializeRealTimeValidation();
+            setMinimumDate();
+        });
+    </script>
+</body>
+</html>

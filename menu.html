@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-tr="Menümüz - Sultan's Feast" data-lang-en="Menu - Sultan's Feast">Menümüz - Sultan's Feast</title>
+    <meta name="description" data-lang-tr="Geleneksel kebaplar, mezeler ve tatlılarımızı içeren otantik Türk menümüzü keşfedin. Sultan's Feast'te en iyi Türk mutfağını deneyimleyin." data-lang-en="Explore our authentic Turkish menu featuring traditional kebabs, appetizers, and desserts. Experience the finest Turkish cuisine at Sultan's Feast." content="Geleneksel kebaplar, mezeler ve tatlılarımızı içeren otantik Türk menümüzü keşfedin. Sultan's Feast'te en iyi Türk mutfağını deneyimleyin.">
+    <meta name="keywords" content="türk restoran, kebap, menü, otantik türk yemekleri, istanbul, gaziantep, adana kebap, baklava, meze, fine dining, turkish restaurant, kebab, menu, authentic turkish food">
+    <meta name="author" content="Sultan's Feast">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Menümüz - Sultan's Feast">
+    <meta property="og:description" content="Geleneksel kebaplar, mezeler ve tatlılarımızı içeren otantik Türk menümüzü keşfedin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sultansfeast.com/menu.html">
+    <meta property="og:image" content="https://sultansfeast.com/images/menu-og.jpg">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .text-gold {
+            color: #D4AF37;
+        }
+        
+        .border-gold {
+            border-color: #D4AF37;
+        }
+        
+        .hover-gold:hover {
+            color: #FFD700;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37, #FFD700);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #FFD700, #D4AF37);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .mobile-menu-slide {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu-slide.active {
+            transform: translateX(0);
+        }
+        
+        .menu-card {
+            transition: all 0.3s ease;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .menu-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-card:hover .menu-image {
+            transform: scale(1.05);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .loading-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white scroll-smooth">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 bg-opacity-95 nav-blur shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl lg:text-3xl font-bold text-gold hover-gold transition-colors">
+                        Sultan's Feast
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="text-white hover-gold font-medium transition-colors" data-lang-tr="Ana Sayfa" data-lang-en="Homepage">Ana Sayfa</a>
+                    <a href="menu.html" class="text-gold font-medium transition-colors" data-lang-tr="Menümüz" data-lang-en="Menu">Menümüz</a>
+                    <a href="our-story.html" class="text-white hover-gold font-medium transition-colors" data-lang-tr="Hikayemiz" data-lang-en="Our Story">Hikayemiz</a>
+                    <a href="contact.html" class="text-white hover-gold font-medium transition-colors" data-lang-tr="İletişim" data-lang-en="Contact">İletişim</a>
+                    <a href="reservation.html" class="btn-gold text-gray-900 px-6 py-2 rounded-full font-semibold" data-lang-tr="Rezervasyon" data-lang-en="Reservation">
+                        Rezervasyon
+                    </a>
+                    <div class="flex items-center space-x-2 text-sm">
+                        <span class="text-gold cursor-pointer hover:text-yellow-300" data-lang-switch="tr">TR</span>
+                        <span class="text-gray-400">/</span>
+                        <span class="text-white cursor-pointer hover:text-gray-300" data-lang-switch="en">EN</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-gold transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="lg:hidden mobile-menu-slide fixed top-0 left-0 w-full h-screen bg-gray-900 nav-blur z-40">
+            <div class="flex flex-col justify-center items-center h-full space-y-8 text-center">
+                <button id="mobile-menu-close" class="absolute top-6 right-6 text-white hover:text-gold transition-colors">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                
+                <a href="index.html" class="text-2xl text-white hover-gold font-medium transition-colors" data-lang-tr="Ana Sayfa" data-lang-en="Homepage">Ana Sayfa</a>
+                <a href="menu.html" class="text-2xl text-gold font-medium transition-colors" data-lang-tr="Menümüz" data-lang-en="Menu">Menümüz</a>
+                <a href="our-story.html" class="text-2xl text-white hover-gold font-medium transition-colors" data-lang-tr="Hikayemiz" data-lang-en="Our Story">Hikayemiz</a>
+                <a href="contact.html" class="text-2xl text-white hover-gold font-medium transition-colors" data-lang-tr="İletişim" data-lang-en="Contact">İletişim</a>
+                <a href="reservation.html" class="btn-gold text-gray-900 px-8 py-3 rounded-full font-semibold text-lg" data-lang-tr="Rezervasyon" data-lang-en="Reservation">
+                    Rezervasyon
+                </a>
+                <div class="flex items-center space-x-4 text-lg">
+                    <span class="text-gold cursor-pointer hover:text-yellow-300" data-mobile-lang-switch="tr">TR</span>
+                    <span class="text-gray-400">/</span>
+                    <span class="text-white cursor-pointer hover:text-gray-300" data-mobile-lang-switch="en">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Menu Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 fade-in" data-lang-tr="Menümüz" data-lang-en="Our Menu">
+                Menümüz
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto fade-in" data-lang-tr="Geleneksel tarifler ve en kaliteli malzemelerle hazırlanan otantik Türk yemeklerinden oluşan özenle seçilmiş menümüzü keşfedin" data-lang-en="Discover our carefully crafted selection of authentic Turkish dishes, each prepared with traditional recipes and the finest ingredients">
+                Geleneksel tarifler ve en kaliteli malzemelerle hazırlanan otantik Türk yemeklerinden oluşan özenle seçilmiş menümüzü keşfedin
+            </p>
+        </div>
+    </section>
+    
+    <!-- Menu Filter Buttons -->
+    <section class="py-8 bg-gray-800 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4" id="category-filters">
+                <button class="filter-btn active px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-gold text-gray-900" data-category="all">
+                    <i class="fas fa-th-large mr-2"></i>Tüm Menü
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Menu Content -->
+    <main class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Loading State -->
+            <div id="menu-loading" class="text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gold"></div>
+                <p class="text-gray-400 mt-4" data-lang-tr="Menü yükleniyor..." data-lang-en="Loading menu...">Menü yükleniyor...</p>
+            </div>
+            
+            <!-- Menu Container -->
+            <div id="menu-container" class="hidden">
+                <!-- Menu sections will be dynamically generated here -->
+            </div>
+        </div>
+    </main>
+    
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6" data-lang-tr="Mükemmelliği Tatmaya Hazır mısınız?" data-lang-en="Ready to Taste Excellence?">
+                Mükemmelliği <span class="text-gold">Tatmaya Hazır mısınız?</span>
+            </h2>
+            <p class="text-gray-300 text-lg mb-8" data-lang-tr="Şimdi masanızı ayırtın ve Türkiye'nin otantik lezzetlerini zarif ve modern bir ortamda deneyimleyin." data-lang-en="Book your table now and experience the authentic flavors of Turkey in an elegant modern setting.">
+                Şimdi masanızı ayırtın ve Türkiye'nin otantik lezzetlerini zarif ve modern bir ortamda deneyimleyin.
+            </p>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-6 sm:flex sm:justify-center">
+                <a href="reservation.html" class="btn-gold text-gray-900 px-8 py-4 rounded-full font-semibold text-lg inline-block" data-lang-tr="Rezervasyon Yap" data-lang-en="Make Reservation">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    Rezervasyon Yap
+                </a>
+                <a href="tel:+1555123FEAST" class="border-2 border-gold text-gold px-8 py-4 rounded-full font-semibold text-lg inline-block hover:bg-gold hover:text-gray-900 transition-all duration-300" data-lang-tr="Hemen Ara" data-lang-en="Call Now">
+                    <i class="fas fa-phone mr-2"></i>
+                    Hemen Ara
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 py-16 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-2xl font-bold text-gold mb-4">Sultan's Feast</h3>
+                    <p class="text-gray-300 mb-6">
+                        Where traditional Turkish cuisine meets modern elegance. 
+                        Experience the authentic flavors that have been passed down through generations.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gold" data-lang-tr="Hızlı Linkler" data-lang-en="Quick Links">Hızlı Linkler</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-colors" data-lang-tr="Ana Sayfa" data-lang-en="Homepage">Ana Sayfa</a></li>
+                        <li><a href="menu.html" class="text-gray-300 hover:text-gold transition-colors" data-lang-tr="Menümüz" data-lang-en="Menu">Menümüz</a></li>
+                        <li><a href="our-story.html" class="text-gray-300 hover:text-gold transition-colors" data-lang-tr="Hikayemiz" data-lang-en="Our Story">Hikayemiz</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors" data-lang-tr="İletişim" data-lang-en="Contact">İletişim</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gold">İletişim Bilgileri</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-gold mr-2"></i>
+                            123 Gourmet Street, Downtown
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-2"></i>
+                            (555) 123-FEAST
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-gold mr-2"></i>
+                            info@sultansfeast.com
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Opening Hours -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gold">Çalışma Saatleri</h4>
+                    <ul class="space-y-1 text-gray-300 text-sm">
+                        <li class="flex justify-between">
+                            <span>Pzt - Per:</span>
+                            <span>11:30 - 22:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Cum - Cmt:</span>
+                            <span>11:30 - 23:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Pazar:</span>
+                            <span>12:00 - 21:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Sultan's Feast. Tüm hakları saklıdır.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Gizlilik Politikası</a>
+                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Kullanım Şartları</a>
+                    <a href="#" class="text-gray-400 hover:text-gold text-sm transition-colors">Çerez Politikası</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- App.js for language management -->
+    <script src="app.js"></script>
+    
+    <!-- Menu Data & JavaScript -->
+    <script>
+        // Menu Data Structure
+        const menuData = {
+            categories: [
+                {
+                    id: "appetizers",
+                    name_tr: "Başlangıçlar",
+                    name_en: "Appetizers",
+                    icon: "fas fa-seedling",
+                    items: [
+                        {
+                            id: "hummus",
+                            name_tr: "Humus",
+                            name_en: "Hummus",
+                            description_tr: "Nohut, tahin, limon suyu ve sarımsak ile hazırlanan klasik lezzet. Zeytinyağı ve kırmızı toz biber ile servis edilir.",
+                            description_en: "A classic blend of chickpeas, tahini, lemon juice, and garlic. Served with olive oil and paprika.",
+                            price: "45 TL",
+                            image: "https://images.unsplash.com/photo-1621510456681-2330135ba5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: false
+                        },
+                        {
+                            id: "babaganoush",
+                            name_tr: "Babaganuş",
+                            name_en: "Babaganoush",
+                            description_tr: "Közlenmiş patlıcan, tahin, sarımsak ve limon ile hazırlanan kremsi lezzet. Nar ekşisi ve maydanoz ile süslenmiştir.",
+                            description_en: "Smoky roasted eggplant mixed with tahini, garlic, and lemon. Garnished with pomegranate molasses and parsley.",
+                            price: "48 TL",
+                            image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: true
+                        },
+                        {
+                            id: "mezze-platter",
+                            name_tr: "Karışık Meze Tabağı",
+                            name_en: "Mixed Mezze Platter",
+                            description_tr: "Humus, babaganuş, haydari, ezme, dolma ve turşu çeşitlerinin bulunduğu zengin meze tabağı.",
+                            description_en: "A rich selection of hummus, babaganoush, haydari, ezme, dolma, and assorted pickles.",
+                            price: "85 TL",
+                            image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: true
+                        },
+                        {
+                            id: "sigara-boregi",
+                            name_tr: "Sigara Böreği",
+                            name_en: "Sigara Böreği",
+                            description_tr: "İnce yufka ile sarılmış peynirli börek. Çıtır çıtır kızartılmış, yanında cacık sosu ile servis edilir.",
+                            description_en: "Crispy phyllo pastry rolls filled with cheese. Deep-fried to golden perfection, served with cacık sauce.",
+                            price: "42 TL",
+                            image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: false
+                        }
+                    ]
+                },
+                {
+                    id: "kebabs",
+                    name_tr: "Ana Yemekler - Kebaplar",
+                    name_en: "Main Courses - Kebabs",
+                    icon: "fas fa-fire",
+                    items: [
+                        {
+                            id: "adana-kebab",
+                            name_tr: "Sultan Adana Kebap",
+                            name_en: "Sultan Adana Kebab",
+                            description_tr: "El yapımı kıyma ile hazırlanan geleneksel Adana kebabı. Özel baharatlarımızla marine edilmiş, mangal ateşinde pişirilmiştir.",
+                            description_en: "Traditional Adana kebab made with hand-minced meat. Marinated with our special spices and grilled over charcoal.",
+                            price: "95 TL",
+                            image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: false,
+                            isPopular: true
+                        },
+                        {
+                            id: "lamb-shish",
+                            name_tr: "Kuzu Şiş",
+                            name_en: "Lamb Shish",
+                            description_tr: "En kaliteli kuzu etinin marine edilmesi ile hazırlanan şiş kebap. Taze sebzeler ve pilav ile servis edilir.",
+                            description_en: "Premium lamb marinated and grilled to perfection. Served with fresh vegetables and rice pilaf.",
+                            price: "125 TL",
+                            image: "https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: false,
+                            isPopular: true
+                        },
+                        {
+                            id: "mixed-grill",
+                            name_tr: "İmparatorluk Karışık Izgara",
+                            name_en: "Imperial Mixed Grill",
+                            description_tr: "Adana, şiş, pirzola ve tavuk şişin muhteşem karışımı. İki kişilik porsiyon, tüm garnitürler ile birlikte.",
+                            description_en: "A magnificent combination of Adana, shish, chops, and chicken shish. Serves two, with all traditional sides.",
+                            price: "185 TL",
+                            image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: false,
+                            isPopular: true
+                        },
+                        {
+                            id: "chicken-shish",
+                            name_tr: "Tavuk Şiş",
+                            name_en: "Chicken Shish",
+                            description_tr: "Marine edilmiş tavuk göğsü parçaları, sebzeler ile birlikte ızgarada pişirilmiştir. Tereyağlı pilav ile servis.",
+                            description_en: "Marinated chicken breast pieces grilled with vegetables. Served with buttered rice pilaf.",
+                            price: "78 TL",
+                            image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: false,
+                            isPopular: false
+                        }
+                    ]
+                },
+                {
+                    id: "salads",
+                    name_tr: "Salatalar",
+                    name_en: "Salads",
+                    icon: "fas fa-leaf",
+                    items: [
+                        {
+                            id: "coban-salata",
+                            name_tr: "Çoban Salata",
+                            name_en: "Shepherd's Salad",
+                            description_tr: "Domates, salatalık, soğan, biber ve maydanozun taze karışımı. Zeytinyağı ve limon ile sosuyla.",
+                            description_en: "Fresh mix of tomatoes, cucumber, onion, pepper, and parsley. Dressed with olive oil and lemon.",
+                            price: "35 TL",
+                            image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: true
+                        },
+                        {
+                            id: "rocket-salad",
+                            name_tr: "Roka Salatası",
+                            name_en: "Arugula Salad",
+                            description_tr: "Taze roka yaprakları, çeri domates, ceviz ve parmesan peyniri. Balzamik sirke sosu ile.",
+                            description_en: "Fresh arugula leaves, cherry tomatoes, walnuts, and parmesan cheese. With balsamic vinegar dressing.",
+                            price: "42 TL",
+                            image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: false
+                        },
+                        {
+                            id: "seasons-salad",
+                            name_tr: "Mevsim Salatası",
+                            name_en: "Seasonal Salad",
+                            description_tr: "Mevsim yeşillikleri, avokado, nar, ceviz ve keçi peyniri. Özel ev yapımı sos ile.",
+                            description_en: "Seasonal greens, avocado, pomegranate, walnuts, and goat cheese. With our special house dressing.",
+                            price: "48 TL",
+                            image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: false
+                        }
+                    ]
+                },
+                {
+                    id: "desserts",
+                    name_tr: "Tatlılar",
+                    name_en: "Desserts",
+                    icon: "fas fa-birthday-cake",
+                    items: [
+                        {
+                            id: "baklava",
+                            name_tr: "Antep Fıstıklı Baklava",
+                            name_en: "Pistachio Baklava",
+                            description_tr: "El açması yufka ile hazırlanan geleneksel baklava. Antep fıstığı ve özel şerbeti ile.",
+                            description_en: "Traditional baklava made with hand-rolled phyllo pastry. With Antep pistachios and special syrup.",
+                            price: "55 TL",
+                            image: "https://images.unsplash.com/photo-1628294895950-9805252327bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: true
+                        },
+                        {
+                            id: "kunefe",
+                            name_tr: "Künefe",
+                            name_en: "Künefe",
+                            description_tr: "Hatay usulü geleneksel künefe. Taze lor peyniri ve şerbet ile, üzeri kaymak ve fıstık.",
+                            description_en: "Traditional Hatay-style künefe. With fresh lor cheese and syrup, topped with kaymak and pistachios.",
+                            price: "65 TL",
+                            image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: true
+                        },
+                        {
+                            id: "sutlac",
+                            name_tr: "Fırın Sütlaç",
+                            name_en: "Baked Rice Pudding",
+                            description_tr: "Geleneksel fırın sütlaç. Üzeri karamelleşmiş, tarçın ile servis edilir.",
+                            description_en: "Traditional baked rice pudding. Caramelized top, served with cinnamon.",
+                            price: "38 TL",
+                            image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: false
+                        },
+                        {
+                            id: "turkish-delight",
+                            name_tr: "Lokum Çeşitleri",
+                            name_en: "Turkish Delight Selection",
+                            description_tr: "Çeşitli aromalarda ev yapımı lokumlar. Gül, limon, fıstık ve nar aromaları.",
+                            description_en: "Homemade Turkish delights in various flavors. Rose, lemon, pistachio, and pomegranate varieties.",
+                            price: "45 TL",
+                            image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: false
+                        }
+                    ]
+                },
+                {
+                    id: "beverages",
+                    name_tr: "İçecekler",
+                    name_en: "Beverages",
+                    icon: "fas fa-glass-cheers",
+                    items: [
+                        {
+                            id: "turkish-tea",
+                            name_tr: "Türk Çayı",
+                            name_en: "Turkish Tea",
+                            description_tr: "Geleneksel demli Türk çayı. İnce belli bardakta servis edilir.",
+                            description_en: "Traditional brewed Turkish tea. Served in traditional thin-waisted glasses.",
+                            price: "12 TL",
+                            image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: true
+                        },
+                        {
+                            id: "turkish-coffee",
+                            name_tr: "Türk Kahvesi",
+                            name_en: "Turkish Coffee",
+                            description_tr: "UNESCO kültürel mirası Türk kahvesi. Lokum ve su ile servis edilir.",
+                            description_en: "UNESCO cultural heritage Turkish coffee. Served with Turkish delight and water.",
+                            price: "28 TL",
+                            image: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: true
+                        },
+                        {
+                            id: "ayran",
+                            name_tr: "Ayran",
+                            name_en: "Ayran",
+                            description_tr: "Ev yapımı taze ayran. Geleneksel Türk içeceği, kebapların yanında mükemmel.",
+                            description_en: "Homemade fresh ayran. Traditional Turkish drink, perfect with kebabs.",
+                            price: "18 TL",
+                            image: "https://images.unsplash.com/photo-1553909489-cd47e0ef937f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: true
+                        },
+                        {
+                            id: "pomegranate-juice",
+                            name_tr: "Taze Nar Suyu",
+                            name_en: "Fresh Pomegranate Juice",
+                            description_tr: "Taze sıkılmış nar suyu. Antioksidan açısından zengin, doğal ve sağlıklı.",
+                            description_en: "Freshly squeezed pomegranate juice. Rich in antioxidants, natural and healthy.",
+                            price: "32 TL",
+                            image: "https://images.unsplash.com/photo-1610970881699-44a5587cabec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                            isVegetarian: true,
+                            isPopular: false
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Global variables
+        let currentLanguage = 'tr';
+        let activeFilter = 'all';
+
+        // Main render function
+        function renderMenu() {
+            const menuContainer = document.getElementById('menu-container');
+            const loadingElement = document.getElementById('menu-loading');
+            
+            // Show loading state
+            setTimeout(() => {
+                loadingElement.classList.add('hidden');
+                menuContainer.classList.remove('hidden');
+                
+                // Clear existing content
+                menuContainer.innerHTML = '';
+                
+                // Generate category filters
+                generateCategoryFilters();
+                
+                // Render each category
+                menuData.categories.forEach((category, index) => {
+                    if (activeFilter === 'all' || activeFilter === category.id) {
+                        const categorySection = createCategorySection(category, index);
+                        menuContainer.appendChild(categorySection);
+                    }
+                });
+                
+                // Add fade-in animations
+                addFadeInAnimations();
+                
+            }, 800); // Simulate loading time
+        }
+
+        // Generate category filter buttons
+        function generateCategoryFilters() {
+            const filtersContainer = document.getElementById('category-filters');
+            
+            // Clear existing filters except "All" button
+            const allButton = filtersContainer.querySelector('[data-category="all"]');
+            filtersContainer.innerHTML = '';
+            filtersContainer.appendChild(allButton);
+            
+            // Add category filters
+            menuData.categories.forEach(category => {
+                const filterButton = document.createElement('button');
+                filterButton.className = 'filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-gray-700 text-white hover:bg-gray-600';
+                filterButton.setAttribute('data-category', category.id);
+                filterButton.innerHTML = `<i class="${category.icon} mr-2"></i>${category.name_tr}`;
+                
+                filterButton.addEventListener('click', () => {
+                    setActiveFilter(category.id);
+                });
+                
+                filtersContainer.appendChild(filterButton);
+            });
+        }
+
+        // Set active filter
+        function setActiveFilter(categoryId) {
+            activeFilter = categoryId;
+            
+            // Update button styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-gold', 'text-gray-900');
+                btn.classList.add('bg-gray-700', 'text-white');
+            });
+            
+            const activeButton = document.querySelector(`[data-category="${categoryId}"]`);
+            activeButton.classList.remove('bg-gray-700', 'text-white');
+            activeButton.classList.add('bg-gold', 'text-gray-900');
+            
+            // Re-render menu
+            renderMenu();
+        }
+
+        // Create category section
+        function createCategorySection(category, index) {
+            const section = document.createElement('section');
+            section.className = 'mb-16';
+            section.style.animationDelay = `${index * 0.1}s`;
+            
+            const categoryHeader = document.createElement('div');
+            categoryHeader.className = 'text-center mb-12';
+            categoryHeader.innerHTML = `
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gold rounded-full mb-4">
+                    <i class="${category.icon} text-2xl text-gray-900"></i>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gold mb-4">${category.name_tr}</h2>
+                <div class="w-24 h-1 bg-gold mx-auto rounded"></div>
+            `;
+            
+            const itemsGrid = document.createElement('div');
+            itemsGrid.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12';
+            
+            category.items.forEach((item, itemIndex) => {
+                const menuCard = createMenuCard(item, itemIndex);
+                itemsGrid.appendChild(menuCard);
+            });
+            
+            section.appendChild(categoryHeader);
+            section.appendChild(itemsGrid);
+            
+            return section;
+        }
+
+        // Create menu card
+        function createMenuCard(item, index) {
+            const card = document.createElement('div');
+            card.className = 'menu-card bg-gray-800 rounded-lg overflow-hidden shadow-lg relative';
+            card.style.animationDelay = `${index * 0.1}s`;
+            
+            // Popular badge
+            const popularBadge = item.isPopular ? 
+                '<div class="absolute top-4 left-4 z-10 bg-gold text-gray-900 px-3 py-1 rounded-full text-sm font-bold">Popüler</div>' : '';
+            
+            // Vegetarian badge
+            const vegetarianBadge = item.isVegetarian ? 
+                '<div class="absolute top-4 right-4 z-10 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold"><i class="fas fa-leaf mr-1"></i>Vejetaryen</div>' : '';
+            
+            card.innerHTML = `
+                ${popularBadge}
+                ${vegetarianBadge}
+                <div class="relative overflow-hidden">
+                    <img src="${item.image}" 
+                         alt="${item.name_tr}" 
+                         class="menu-image w-full h-48 object-cover loading-shimmer"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-gold">${item.name_tr}</h3>
+                        <span class="text-lg font-bold text-gold ml-4">${item.price}</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">${item.description_tr}</p>
+                    <div class="flex justify-between items-center">
+                        <button class="btn-gold text-gray-900 px-4 py-2 rounded-full font-semibold text-sm hover:scale-105 transition-transform" 
+                                onclick="addToOrder('${item.id}')">
+                            <i class="fas fa-plus mr-1"></i>Sepete Ekle
+                        </button>
+                        <button class="text-gold hover:text-yellow-300 transition-colors" 
+                                onclick="viewItemDetails('${item.id}')">
+                            <i class="fas fa-info-circle mr-1"></i>Detaylar
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Add fade-in animations
+        function addFadeInAnimations() {
+            const animatedElements = document.querySelectorAll('.menu-card, section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
+            });
+            
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Placeholder functions for future implementation
+        function addToOrder(itemId) {
+            // This would integrate with a cart system
+            console.log('Adding to order:', itemId);
+            
+            // Show feedback
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check mr-1"></i>Eklendi!';
+            button.classList.add('bg-green-600');
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-600');
+            }, 1500);
+        }
+
+        function viewItemDetails(itemId) {
+            // This would open a modal with detailed item information
+            console.log('Viewing details for:', itemId);
+            
+            // Find the item
+            let selectedItem = null;
+            for (const category of menuData.categories) {
+                selectedItem = category.items.find(item => item.id === itemId);
+                if (selectedItem) break;
+            }
+            
+            if (selectedItem) {
+                alert(`${selectedItem.name_tr}\n\n${selectedItem.description_tr}\n\nFiyat: ${selectedItem.price}`);
+            }
+        }
+
+        // Mobile menu functionality
+        function initializeMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('active');
+                document.body.classList.toggle('overflow-hidden');
+            }
+            
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            mobileMenuClose.addEventListener('click', toggleMobileMenu);
+            
+            // Close mobile menu when clicking on links
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+        }
+
+        // Global renderMenu function for language manager integration
+        window.renderMenu = function(lang = null) {
+            const currentLang = lang || window.getCurrentLanguage();
+            window.menuManager.setMenuData(menuData);
+            window.menuManager.renderMenu(currentLang);
+        };
+
+        // Initialize the menu when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize mobile menu
+            initializeMobileMenu();
+            
+            // Set menu data for the global menu manager
+            window.menuManager.setMenuData(menuData);
+            
+            // Add filter button event listener for "All" button
+            document.querySelector('[data-category="all"]').addEventListener('click', () => {
+                setActiveFilter('all');
+            });
+            
+            // Start rendering the menu with current language
+            const currentLang = window.getCurrentLanguage();
+            renderMenu(currentLang);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
