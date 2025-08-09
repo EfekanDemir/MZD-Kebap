@@ -96,10 +96,7 @@ img { max-width: 100%; height: auto; display: block; border-radius: var(--radius
 .price { font-weight: 800; color: var(--accent); }
 .tag { font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); color: #d7d7dc; }
 
-/* Locations */
-.locations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.location-card { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-1); }
-.location-card h3 { margin-top: 0; }
+
 
 /* Reservation */
 .reservation-form { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-2); }
@@ -138,7 +135,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid rgba(212,160,23,0
 @media (max-width: 1024px) {
   .grid-3 { grid-template-columns: 1fr 1fr; }
   .menu-grid { grid-template-columns: 1fr 1fr; }
-  .locations-grid { grid-template-columns: 1fr 1fr; }
+
   .about-inner { grid-template-columns: 1fr; }
   .contact-inner { grid-template-columns: 1fr; }
 }
@@ -150,7 +147,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid rgba(212,160,23,0
   .nav-toggle { display: inline-block; }
   .grid-3 { grid-template-columns: 1fr; }
   .menu-grid { grid-template-columns: 1fr; }
-  .locations-grid { grid-template-columns: 1fr; }
+
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-inner { grid-template-columns: 1fr; text-align: center; }
   .copyright { text-align: center; }

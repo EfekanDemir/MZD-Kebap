@@ -12,7 +12,7 @@ const translations = {
         homepage: "Ana Sayfa",
         menu: "Menü",
         ourStory: "Hikayemiz",
-        locations: "Konumlar",
+
         contact: "İletişim",
         reservation: "Rezervasyon",
         
@@ -96,7 +96,7 @@ const translations = {
         homepage: "Homepage",
         menu: "Menu",
         ourStory: "Our Story",
-        locations: "Locations",
+
         contact: "Contact",
         reservation: "Reservation",
         
