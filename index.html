@@ -123,7 +123,7 @@
                     <a href="#" class="text-white hover-gold font-medium transition-colors" data-i18n="homepage">Ana Sayfa</a>
                     <a href="menu.html" class="text-white hover-gold font-medium transition-colors" data-i18n="menu">Menü</a>
                     <a href="#story" class="text-white hover-gold font-medium transition-colors" data-i18n="ourStory">Hikayemiz</a>
-                    <a href="#locations" class="text-white hover-gold font-medium transition-colors" data-i18n="locations">Konumlar</a>
+
                     <a href="#contact" class="text-white hover-gold font-medium transition-colors" data-i18n="contact">İletişim</a>
                     <a href="#reservation" class="btn-gold text-gray-900 px-6 py-2 rounded-full font-semibold" data-i18n="reservation">
                         Rezervasyon
@@ -154,7 +154,7 @@
                 <a href="#" class="text-2xl text-white hover-gold font-medium transition-colors" data-i18n="homepage">Ana Sayfa</a>
                 <a href="menu.html" class="text-2xl text-white hover-gold font-medium transition-colors" data-i18n="menu">Menü</a>
                 <a href="#story" class="text-2xl text-white hover-gold font-medium transition-colors" data-i18n="ourStory">Hikayemiz</a>
-                <a href="#locations" class="text-2xl text-white hover-gold font-medium transition-colors" data-i18n="locations">Konumlar</a>
+
                 <a href="#contact" class="text-2xl text-white hover-gold font-medium transition-colors" data-i18n="contact">İletişim</a>
                 <a href="#reservation" class="btn-gold text-gray-900 px-8 py-3 rounded-full font-semibold text-lg" data-i18n="reservation">
                     Rezervasyon
@@ -284,88 +284,6 @@
         </div>
     </section>
     
-    <!-- Location & Hours -->
-    <section id="locations" class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div>
-                    <h2 class="text-3xl sm:text-4xl font-bold mb-8">
-                        <span data-i18n="visitOurRestaurant">Restoranımızı Ziyaret Edin</span>
-                    </h2>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-map-marker-alt text-gold text-xl mt-1"></i>
-                            <div>
-                                <h3 class="font-semibold text-lg mb-1" data-i18n="address">Adres</h3>
-                                <p class="text-gray-300">123 Gurme Sokağı, Merkez İlçesi<br>İstanbul, Türkiye 34000</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-clock text-gold text-xl mt-1"></i>
-                            <div>
-                                <h3 class="font-semibold text-lg mb-1" data-i18n="openingHours">Açılış Saatleri</h3>
-                                <div class="text-gray-300 space-y-1">
-                                    <p data-i18n="mondayThursday">Pazartesi - Perşembe: 11:30 - 22:00</p>
-                                    <p data-i18n="fridaySaturday">Cuma - Cumartesi: 11:30 - 23:00</p>
-                                    <p data-i18n="sunday">Pazar: 12:00 - 21:00</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-phone text-gold text-xl mt-1"></i>
-                            <div>
-                                <h3 class="font-semibold text-lg mb-1" data-i18n="reservations">Rezervasyonlar</h3>
-                                <p class="text-gray-300">+90 212 555-1234</p>
-                                <p class="text-gray-300">+90 212 555-5678</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-700 rounded-lg p-8">
-                    <h3 class="text-2xl font-bold mb-6 text-center" data-i18n="makeReservationForm">Rezervasyon Yapın</h3>
-                    <form id="reservation-form" class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <input type="text" placeholder="Ad" data-i18n-placeholder="firstName" class="bg-gray-600 border border-gray-500 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-gold focus:outline-none">
-                            <input type="text" placeholder="Soyad" data-i18n-placeholder="lastName" class="bg-gray-600 border border-gray-500 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-gold focus:outline-none">
-                        </div>
-                        <input type="email" placeholder="E-posta Adresi" data-i18n-placeholder="emailAddress" class="w-full bg-gray-600 border border-gray-500 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-gold focus:outline-none">
-                        <input type="tel" placeholder="Telefon Numarası" data-i18n-placeholder="phoneNumber" class="w-full bg-gray-600 border border-gray-500 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-gold focus:outline-none">
-                        <div class="grid grid-cols-2 gap-4">
-                            <input type="date" class="bg-gray-600 border border-gray-500 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none">
-                            <select class="bg-gray-600 border border-gray-500 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none">
-                                <option data-i18n="selectTime">Saat Seçin</option>
-                                <option>17:30</option>
-                                <option>18:00</option>
-                                <option>18:30</option>
-                                <option>19:00</option>
-                                <option>19:30</option>
-                                <option>20:00</option>
-                                <option>20:30</option>
-                                <option>21:00</option>
-                            </select>
-                        </div>
-                        <select class="w-full bg-gray-600 border border-gray-500 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none">
-                            <option data-i18n="partySize">Kişi Sayısı</option>
-                            <option data-i18n="guests1">1 Kişi</option>
-                            <option data-i18n="guests2">2 Kişi</option>
-                            <option data-i18n="guests3">3 Kişi</option>
-                            <option data-i18n="guests4">4 Kişi</option>
-                            <option data-i18n="guests5">5 Kişi</option>
-                            <option data-i18n="guests6">6+ Kişi</option>
-                        </select>
-                        <button type="submit" class="w-full btn-gold text-gray-900 py-3 rounded-lg font-semibold" data-i18n="reserveTable">
-                            Masa Rezervasyonu
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!-- Footer -->
     <footer id="contact" class="bg-gray-900 py-16 border-t border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -399,7 +317,7 @@
                         <li><a href="#" class="text-gray-300 hover:text-gold transition-colors" data-i18n="homepage">Ana Sayfa</a></li>
                         <li><a href="menu.html" class="text-gray-300 hover:text-gold transition-colors" data-i18n="menu">Menü</a></li>
                         <li><a href="#story" class="text-gray-300 hover:text-gold transition-colors" data-i18n="ourStory">Hikayemiz</a></li>
-                        <li><a href="#locations" class="text-gray-300 hover:text-gold transition-colors" data-i18n="locations">Konumlar</a></li>
+
                         <li><a href="#contact" class="text-gray-300 hover:text-gold transition-colors" data-i18n="contact">İletişim</a></li>
                     </ul>
                 </div>
