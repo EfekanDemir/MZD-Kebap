@@ -24,8 +24,8 @@ const translations = {
         
         // Welcome Section
         welcomeTo: "Hoş Geldiniz",
-        restaurantName: "MZD Kebap",
-        welcomeText1: "Üç nesildir ailemiz geleneksel Türk mutfağının sanatını mükemmelleştirdi. MZD Kebap'ta, zamana dayanmış bu tarifleri onurlandırırken modern mutfak tekniklerini benimsiyor ve unutulmaz bir yemek deneyimi yaratıyoruz.",
+        restaurantName: "MZD Kebap ve Dürüm Evi",
+        welcomeText1: "Üç nesildir ailemiz geleneksel Türk mutfağının sanatını mükemmelleştirdi. MZD Kebap ve Dürüm Evi'te, zamana dayanmış bu tarifleri onurlandırırken modern mutfak tekniklerini benimsiyor ve unutulmaz bir yemek deneyimi yaratıyoruz.",
         welcomeText2: "Her yemek en kaliteli malzemelerle hazırlanır; Türkiye'den doğrudan ithal edilen özenle seçilmiş baharatlardan yerel kaynaklı premium etlere kadar, sizi İstanbul'un hareketli sokaklarına götüren otantik lezzetler garantilenir.",
         learnMore: "Hikayemiz Hakkında Daha Fazla Bilgi",
         
@@ -61,7 +61,7 @@ const translations = {
         footerDescription: "Geleneksel Türk mutfağının modern zarafetle buluştuğu yer. Nesiller boyu aktarılan otantik lezzetleri deneyimleyin.",
         quickLinks: "Hızlı Bağlantılar",
         contactInfo: "İletişim Bilgileri",
-        copyright: "© 2024 MZD Kebap. Tüm hakları saklıdır.",
+        copyright: "© 2024 MZD Kebap ve Dürüm Evi. Tüm hakları saklıdır.",
         privacyPolicy: "Gizlilik Politikası",
         termsOfService: "Hizmet Şartları",
         cookiePolicy: "Çerez Politikası",
@@ -115,12 +115,12 @@ const translations = {
         specialRequestsInfo: "Doğum günü kutlaması, diyet kısıtlamaları, oturma tercihleri vb.",
         
         // Meta
-        pageTitle: "MZD Kebap - Kebap Sanatı Yeniden Tanımlandı",
-        pageDescription: "MZD Kebap'ta geleneksel tarifler ve çağdaş zarafet ile otantik Türk kebap lezzetlerini modern dokunuşla deneyimleyin. Premium yemek deneyimi.",
-        menuPageTitle: "Menümüz - MZD Kebap",
-        menuPageDescription: "Geleneksel kebaplar, mezeler ve tatlılarımızı içeren otantik Türk menümüzü keşfedin. MZD Kebap'ta en iyi Türk mutfağını deneyimleyin.",
-        reservationPageTitle: "Rezervasyon Yap - MZD Kebap",
-        reservationPageDescription: "MZD Kebap'ta masanızı ayırtın. Unutulmaz Türk yemek deneyimi için otantik lezzetler ve çağdaş zarafet ile online rezervasyon yapın."
+        pageTitle: "MZD Kebap ve Dürüm Evi - Kebap Sanatı Yeniden Tanımlandı",
+        pageDescription: "MZD Kebap ve Dürüm Evi'nde geleneksel tarifler ve çağdaş zarafet ile otantik Türk kebap lezzetlerini modern dokunuşla deneyimleyin. Premium yemek deneyimi.",
+        menuPageTitle: "Menümüz - MZD Kebap ve Dürüm Evi",
+        menuPageDescription: "Geleneksel kebaplar, mezeler ve tatlılarımızı içeren otantik Türk menümüzü keşfedin. MZD Kebap ve Dürüm Evi'nde en iyi Türk mutfağını deneyimleyin.",
+        reservationPageTitle: "Rezervasyon Yap - MZD Kebap ve Dürüm Evi",
+        reservationPageDescription: "MZD Kebap ve Dürüm Evi'nde masanızı ayırtın. Unutulmaz Türk yemek deneyimi için otantik lezzetler ve çağdaş zarafet ile online rezervasyon yapın."
     },
     en: {
         // Navigation
@@ -139,8 +139,8 @@ const translations = {
         
         // Welcome Section
         welcomeTo: "Welcome to",
-        restaurantName: "MZD Kebap",
-        welcomeText1: "For over three generations, our family has perfected the art of traditional Turkish cuisine. At MZD Kebap, we honor these time-tested recipes while embracing modern culinary techniques to create an unforgettable dining experience.",
+        restaurantName: "MZD Kebap ve Dürüm Evi",
+        welcomeText1: "For over three generations, our family has perfected the art of traditional Turkish cuisine. At MZD Kebap ve Dürüm Evi, we honor these time-tested recipes while embracing modern culinary techniques to create an unforgettable dining experience.",
         welcomeText2: "Every dish is crafted with the finest ingredients, from hand-selected spices imported directly from Turkey to locally-sourced premium meats, ensuring authentic flavors that transport you to the bustling streets of Istanbul.",
         learnMore: "Learn More About Our Story",
         
@@ -176,7 +176,7 @@ const translations = {
         footerDescription: "Where traditional Turkish cuisine meets modern elegance. Experience the authentic flavors that have been passed down through generations.",
         quickLinks: "Quick Links",
         contactInfo: "Contact Info",
-        copyright: "© 2024 MZD Kebap. All rights reserved.",
+        copyright: "© 2024 MZD Kebap ve Dürüm Evi. All rights reserved.",
         privacyPolicy: "Privacy Policy",
         termsOfService: "Terms of Service",
         cookiePolicy: "Cookie Policy",
@@ -230,12 +230,12 @@ const translations = {
         specialRequestsInfo: "Birthday celebration, dietary restrictions, seating preferences, etc.",
         
         // Meta
-        pageTitle: "MZD Kebap - The Art of Kebab, Redefined",
-        pageDescription: "Experience authentic Turkish kebab flavors with a modern touch at MZD Kebap. Premium dining experience with traditional recipes and contemporary elegance.",
-        menuPageTitle: "Menu - MZD Kebap",
-        menuPageDescription: "Explore our authentic Turkish menu featuring traditional kebabs, appetizers, and desserts. Experience the finest Turkish cuisine at MZD Kebap.",
-        reservationPageTitle: "Make a Reservation - MZD Kebap",
-        reservationPageDescription: "Reserve your table at MZD Kebap. Book online for an unforgettable Turkish dining experience with authentic flavors and contemporary elegance."
+        pageTitle: "MZD Kebap ve Dürüm Evi - The Art of Kebab, Redefined",
+        pageDescription: "Experience authentic Turkish kebab flavors with a modern touch at MZD Kebap ve Dürüm Evi. Premium dining experience with traditional recipes and contemporary elegance.",
+        menuPageTitle: "Menu - MZD Kebap ve Dürüm Evi",
+        menuPageDescription: "Explore our authentic Turkish menu featuring traditional kebabs, appetizers, and desserts. Experience the finest Turkish cuisine at MZD Kebap ve Dürüm Evi.",
+        reservationPageTitle: "Make a Reservation - MZD Kebap ve Dürüm Evi",
+        reservationPageDescription: "Reserve your table at MZD Kebap ve Dürüm Evi. Book online for an unforgettable Turkish dining experience with authentic flavors and contemporary elegance."
     }
 };
 
