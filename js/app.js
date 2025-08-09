@@ -121,121 +121,6 @@ const translations = {
         menuPageDescription: "Geleneksel kebaplar, mezeler ve tatlılarımızı içeren otantik Türk menümüzü keşfedin. MZD Kebap ve Dürüm Evi'nde en iyi Türk mutfağını deneyimleyin.",
         reservationPageTitle: "Rezervasyon Yap - MZD Kebap ve Dürüm Evi",
         reservationPageDescription: "MZD Kebap ve Dürüm Evi'nde masanızı ayırtın. Unutulmaz Türk yemek deneyimi için otantik lezzetler ve çağdaş zarafet ile online rezervasyon yapın."
-    },
-    en: {
-        // Navigation
-        homepage: "Homepage",
-        menu: "Menu",
-        ourStory: "Our Story",
-
-        contact: "Contact",
-        reservation: "Reservation",
-        
-        // Hero Section
-        heroTitle: "The Art of Kebab, Redefined",
-        heroSubtitle: "Experience authentic Turkish flavors with a modern touch in an atmosphere of contemporary elegance",
-        viewMenu: "View Menu",
-        makeReservation: "Make Reservation",
-        
-        // Welcome Section
-        welcomeTo: "Welcome to",
-        restaurantName: "MZD Kebap ve Dürüm Evi",
-        welcomeText1: "For over three generations, our family has perfected the art of traditional Turkish cuisine. At MZD Kebap ve Dürüm Evi, we honor these time-tested recipes while embracing modern culinary techniques to create an unforgettable dining experience.",
-        welcomeText2: "Every dish is crafted with the finest ingredients, from hand-selected spices imported directly from Turkey to locally-sourced premium meats, ensuring authentic flavors that transport you to the bustling streets of Istanbul.",
-        learnMore: "Learn More About Our Story",
-        
-        // Featured Items
-        signatureSpecialties: "Signature Specialties",
-        specialtiesSubtitle: "Discover our most beloved dishes, each prepared with passion and served with pride",
-        viewFullMenu: "View Full Menu",
-        
-        // Location & Hours
-        visitOurRestaurant: "Visit Our Restaurant",
-        address: "Address",
-        openingHours: "Opening Hours",
-        reservations: "Reservations",
-        mondayThursday: "Monday - Thursday: 11:30 AM - 10:00 PM",
-        fridaySaturday: "Friday - Saturday: 11:30 AM - 11:00 PM",
-        sunday: "Sunday: 12:00 PM - 9:00 PM",
-        makeReservationForm: "Make a Reservation",
-        firstName: "First Name",
-        lastName: "Last Name",
-        emailAddress: "Email Address",
-        phoneNumber: "Phone Number",
-        selectTime: "Select Time",
-        partySize: "Party Size",
-        reserveTable: "Reserve Table",
-        guests1: "1 Guest",
-        guests2: "2 Guests",
-        guests3: "3 Guests",
-        guests4: "4 Guests",
-        guests5: "5 Guests",
-        guests6: "6+ Guests",
-        
-        // Footer
-        footerDescription: "Where traditional Turkish cuisine meets modern elegance. Experience the authentic flavors that have been passed down through generations.",
-        quickLinks: "Quick Links",
-        contactInfo: "Contact Info",
-        copyright: "© 2024 MZD Kebap ve Dürüm Evi. All rights reserved.",
-        privacyPolicy: "Privacy Policy",
-        termsOfService: "Terms of Service",
-        cookiePolicy: "Cookie Policy",
-        
-        // Menu Items
-        sultanAdanaKebab: "Sultan's Adana Kebab",
-        sultanAdanaDesc: "Hand-minced lamb seasoned with traditional Anatolian spices, grilled to perfection",
-        imperialMixedGrill: "Imperial Mixed Grill",
-        imperialMixedDesc: "A royal feast featuring lamb chops, chicken shish, and Adana kebab with traditional sides",
-        artisanBaklava: "Artisan Baklava",
-        artisanBaklavaDesc: "Layers of crispy phyllo pastry with pistachios and honey, crafted by our master pastry chef",
-        
-        // Common
-        popular: "Popular",
-        vegetarian: "Vegetarian",
-        addToCart: "Add to Cart",
-        details: "Details",
-        
-        // Form Messages
-        thankYouReservation: "Thank you for your reservation request! We will contact you shortly to confirm your booking.",
-        fillRequiredFields: "Please fill in all required fields.",
-        sending: "Sending...",
-        
-        // Reservation Page Specific
-        reserveYourTable: "Reserve Your Table",
-        bookYourTable: "Book your table for an unforgettable dining journey.",
-        bookTable: "Book Table",
-        numberOfGuests: "Number of Guests",
-        preferredDate: "Preferred Date",
-        preferredTime: "Preferred Time",
-        fullName: "Full Name",
-        specialRequests: "Special Requests",
-        reservationSuccess: "Reservation Successful!",
-        successMessage: "Your reservation has been successfully received. We will get back to you shortly.",
-        newReservation: "New Reservation",
-        guests: "Guests",
-        date: "Date",
-        time: "Time",
-        name: "Name",
-        phone: "Phone",
-        email: "Email",
-        pleaseEnterValidEmail: "Please enter a valid email address",
-        pleaseEnterValidPhone: "Please enter a valid phone number",
-        pleaseSelectFutureDate: "Please select a future date",
-        pleaseSelectGuests: "Please select number of guests",
-        pleaseSelectTime: "Please select a time",
-        experienceFinest: "Experience the finest Turkish cuisine in an atmosphere of contemporary elegance.",
-        traditionalMeetsModern: "Where traditional Turkish cuisine meets modern elegance.",
-        reservationSummary: "Reservation Summary",
-        securityInfo: "Your information is secure and will only be used for reservation purposes.",
-        specialRequestsInfo: "Birthday celebration, dietary restrictions, seating preferences, etc.",
-        
-        // Meta
-        pageTitle: "MZD Kebap ve Dürüm Evi - The Art of Kebab, Redefined",
-        pageDescription: "Experience authentic Turkish kebab flavors with a modern touch at MZD Kebap ve Dürüm Evi. Premium dining experience with traditional recipes and contemporary elegance.",
-        menuPageTitle: "Menu - MZD Kebap ve Dürüm Evi",
-        menuPageDescription: "Explore our authentic Turkish menu featuring traditional kebabs, appetizers, and desserts. Experience the finest Turkish cuisine at MZD Kebap ve Dürüm Evi.",
-        reservationPageTitle: "Make a Reservation - MZD Kebap ve Dürüm Evi",
-        reservationPageDescription: "Reserve your table at MZD Kebap ve Dürüm Evi. Book online for an unforgettable Turkish dining experience with authentic flavors and contemporary elegance."
     }
 };
 
@@ -243,7 +128,7 @@ class LanguageManager {
     constructor() {
         this.currentLanguage = 'tr'; // Default to Turkish
         this.storageKey = 'sultans-feast-language';
-        this.supportedLanguages = ['tr', 'en'];
+        this.supportedLanguages = ['tr'];
         this.translations = translations;
         
         this.init();
@@ -298,7 +183,6 @@ class LanguageManager {
     setupLanguageSwitchers() {
         // Desktop language switchers
         const trSwitchers = document.querySelectorAll('[data-lang-switch="tr"]');
-        const enSwitchers = document.querySelectorAll('[data-lang-switch="en"]');
         
         trSwitchers.forEach(switcher => {
             switcher.addEventListener('click', (e) => {
@@ -307,28 +191,13 @@ class LanguageManager {
             });
         });
         
-        enSwitchers.forEach(switcher => {
-            switcher.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.setLanguage('en');
-            });
-        });
-        
         // Mobile language switchers
         const mobileTrSwitchers = document.querySelectorAll('[data-mobile-lang-switch="tr"]');
-        const mobileEnSwitchers = document.querySelectorAll('[data-mobile-lang-switch="en"]');
         
         mobileTrSwitchers.forEach(switcher => {
             switcher.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.setLanguage('tr');
-            });
-        });
-        
-        mobileEnSwitchers.forEach(switcher => {
-            switcher.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.setLanguage('en');
             });
         });
     }
@@ -895,17 +764,6 @@ window.showLegalInfo = function(type) {
                     <h4 class="text-lg font-semibold mb-2">Bilgilerin Kullanımı</h4>
                     <p class="mb-4">Bilgileriniz sadece rezervasyon onayı ve iletişim amacıyla kullanılır.</p>
                 `
-            },
-            en: {
-                title: "Privacy Policy",
-                content: `
-                    <h3 class="text-xl font-bold mb-4">Personal Data Protection</h3>
-                    <p class="mb-4">As MZD Kebap ve Dürüm Evi, protecting our customers' privacy is our priority.</p>
-                    <h4 class="text-lg font-semibold mb-2">Information Collected</h4>
-                    <p class="mb-4">We only collect necessary contact information during the reservation process.</p>
-                    <h4 class="text-lg font-semibold mb-2">Use of Information</h4>
-                    <p class="mb-4">Your information is used only for reservation confirmation and communication purposes.</p>
-                `
             }
         },
         terms: {
@@ -918,17 +776,6 @@ window.showLegalInfo = function(type) {
                     <p class="mb-4">Rezervasyonlar onay alınana kadar kesinleşmez. İptal için en az 2 saat önceden bilgi verilmelidir.</p>
                     <h4 class="text-lg font-semibold mb-2">Sorumluluk</h4>
                     <p class="mb-4">Restoran, müsaitlik durumuna göre rezervasyon taleplerini değerlendirme hakkını saklı tutar.</p>
-                `
-            },
-            en: {
-                title: "Terms of Service",
-                content: `
-                    <h3 class="text-xl font-bold mb-4">Terms of Use</h3>
-                    <p class="mb-4">By using the MZD Kebap ve Dürüm Evi website, you agree to the following terms.</p>
-                    <h4 class="text-lg font-semibold mb-2">Reservation Terms</h4>
-                    <p class="mb-4">Reservations are not confirmed until approval is received. Cancellations require at least 2 hours notice.</p>
-                    <h4 class="text-lg font-semibold mb-2">Liability</h4>
-                    <p class="mb-4">The restaurant reserves the right to evaluate reservation requests based on availability.</p>
                 `
             }
         },
@@ -943,22 +790,11 @@ window.showLegalInfo = function(type) {
                     <h4 class="text-lg font-semibold mb-2">Kontrolü</h4>
                     <p class="mb-4">Tarayıcı ayarlarınızdan çerezleri kontrol edebilirsiniz.</p>
                 `
-            },
-            en: {
-                title: "Cookie Policy",
-                content: `
-                    <h3 class="text-xl font-bold mb-4">Cookie Usage</h3>
-                    <p class="mb-4">We use cookies on our website to improve your experience.</p>
-                    <h4 class="text-lg font-semibold mb-2">Cookie Types</h4>
-                    <p class="mb-4">Essential cookies are used for language preference and site functionality.</p>
-                    <h4 class="text-lg font-semibold mb-2">Control</h4>
-                    <p class="mb-4">You can control cookies through your browser settings.</p>
-                `
             }
         }
     };
     
-    const modalContent = content[type][lang];
+    const modalContent = content[type];
     
     // Create modal
     const modal = document.createElement('div');
@@ -977,7 +813,7 @@ window.showLegalInfo = function(type) {
                 </div>
                 <div class="mt-6 text-center">
                     <button onclick="this.closest('.fixed').remove()" class="btn-gold text-gray-900 px-6 py-2 rounded-full font-semibold">
-                        ${lang === 'tr' ? 'Kapat' : 'Close'}
+                        Kapat
                     </button>
                 </div>
             </div>
