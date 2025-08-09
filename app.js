@@ -85,11 +85,42 @@ const translations = {
         fillRequiredFields: "Lütfen tüm zorunlu alanları doldurun.",
         sending: "Gönderiliyor...",
         
+        // Reservation Page Specific
+        reserveYourTable: "Masa Rezervasyonu",
+        bookYourTable: "Unutulmaz bir yemek yolculuğu için masanızı ayırtın.",
+        bookTable: "Masa Ayırt",
+        numberOfGuests: "Kişi Sayısı",
+        preferredDate: "Tercih Edilen Tarih",
+        preferredTime: "Tercih Edilen Saat",
+        fullName: "Ad Soyad",
+        specialRequests: "Özel İstekler",
+        reservationSuccess: "Rezervasyon Başarılı!",
+        successMessage: "Rezervasyonunuz başarıyla alındı. Kısa sürede size geri dönüş yapacağız.",
+        newReservation: "Yeni Rezervasyon",
+        guests: "Kişi",
+        date: "Tarih",
+        time: "Saat",
+        name: "İsim",
+        phone: "Telefon",
+        email: "E-posta",
+        pleaseEnterValidEmail: "Lütfen geçerli bir e-posta adresi girin",
+        pleaseEnterValidPhone: "Lütfen geçerli bir telefon numarası girin",
+        pleaseSelectFutureDate: "Lütfen gelecek bir tarih seçin",
+        pleaseSelectGuests: "Lütfen kişi sayısını seçin",
+        pleaseSelectTime: "Lütfen bir saat seçin",
+        experienceFinest: "Çağdaş zarafet atmosferinde en iyi Türk mutfağını deneyimleyin.",
+        traditionalMeetsModern: "Geleneksel Türk mutfağının modern zarafetle buluştuğu yer.",
+        reservationSummary: "Rezervasyon Özeti",
+        securityInfo: "Bilgileriniz güvenlidir ve sadece rezervasyon amaçları için kullanılacaktır.",
+        specialRequestsInfo: "Doğum günü kutlaması, diyet kısıtlamaları, oturma tercihleri vb.",
+        
         // Meta
         pageTitle: "Sultan's Feast - Kebap Sanatı Yeniden Tanımlandı",
         pageDescription: "Sultan's Feast'te geleneksel tarifler ve çağdaş zarafet ile otantik Türk kebap lezzetlerini modern dokunuşla deneyimleyin. Premium yemek deneyimi.",
         menuPageTitle: "Menümüz - Sultan's Feast",
-        menuPageDescription: "Geleneksel kebaplar, mezeler ve tatlılarımızı içeren otantik Türk menümüzü keşfedin. Sultan's Feast'te en iyi Türk mutfağını deneyimleyin."
+        menuPageDescription: "Geleneksel kebaplar, mezeler ve tatlılarımızı içeren otantik Türk menümüzü keşfedin. Sultan's Feast'te en iyi Türk mutfağını deneyimleyin.",
+        reservationPageTitle: "Rezervasyon Yap - Sultan's Feast",
+        reservationPageDescription: "Sultan's Feast'te masanızı ayırtın. Unutulmaz Türk yemek deneyimi için otantik lezzetler ve çağdaş zarafet ile online rezervasyon yapın."
     },
     en: {
         // Navigation
@@ -169,11 +200,42 @@ const translations = {
         fillRequiredFields: "Please fill in all required fields.",
         sending: "Sending...",
         
+        // Reservation Page Specific
+        reserveYourTable: "Reserve Your Table",
+        bookYourTable: "Book your table for an unforgettable dining journey.",
+        bookTable: "Book Table",
+        numberOfGuests: "Number of Guests",
+        preferredDate: "Preferred Date",
+        preferredTime: "Preferred Time",
+        fullName: "Full Name",
+        specialRequests: "Special Requests",
+        reservationSuccess: "Reservation Successful!",
+        successMessage: "Your reservation has been successfully received. We will get back to you shortly.",
+        newReservation: "New Reservation",
+        guests: "Guests",
+        date: "Date",
+        time: "Time",
+        name: "Name",
+        phone: "Phone",
+        email: "Email",
+        pleaseEnterValidEmail: "Please enter a valid email address",
+        pleaseEnterValidPhone: "Please enter a valid phone number",
+        pleaseSelectFutureDate: "Please select a future date",
+        pleaseSelectGuests: "Please select number of guests",
+        pleaseSelectTime: "Please select a time",
+        experienceFinest: "Experience the finest Turkish cuisine in an atmosphere of contemporary elegance.",
+        traditionalMeetsModern: "Where traditional Turkish cuisine meets modern elegance.",
+        reservationSummary: "Reservation Summary",
+        securityInfo: "Your information is secure and will only be used for reservation purposes.",
+        specialRequestsInfo: "Birthday celebration, dietary restrictions, seating preferences, etc.",
+        
         // Meta
         pageTitle: "Sultan's Feast - The Art of Kebab, Redefined",
         pageDescription: "Experience authentic Turkish kebab flavors with a modern touch at Sultan's Feast. Premium dining experience with traditional recipes and contemporary elegance.",
         menuPageTitle: "Menu - Sultan's Feast",
-        menuPageDescription: "Explore our authentic Turkish menu featuring traditional kebabs, appetizers, and desserts. Experience the finest Turkish cuisine at Sultan's Feast."
+        menuPageDescription: "Explore our authentic Turkish menu featuring traditional kebabs, appetizers, and desserts. Experience the finest Turkish cuisine at Sultan's Feast.",
+        reservationPageTitle: "Make a Reservation - Sultan's Feast",
+        reservationPageDescription: "Reserve your table at Sultan's Feast. Book online for an unforgettable Turkish dining experience with authentic flavors and contemporary elegance."
     }
 };
 
