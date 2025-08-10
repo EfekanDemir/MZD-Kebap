@@ -49,20 +49,38 @@ Bu proje, Midpoint restoranının web sitesinden ilham alınarak oluşturulmuş 
 
 ## Kurulum ve Çalıştırma
 
-1. Dosyaları bilgisayarınıza indirin
-2. `index.html` dosyasını web tarayıcınızda açın
-3. Veya bir local web server kullanın:
-
+### Yerel Geliştirme
 ```bash
-# Python ile
-python -m http.server 8000
+# Dependencies'leri yükleyin
+npm install
 
-# Node.js ile
-npx serve .
+# Development server'ı başlatın
+npm start
 
-# PHP ile
-php -S localhost:8000
+# Tarayıcıda açın: http://localhost:3000
 ```
+
+### Render.com'da Canlıya Alma
+
+#### Hızlı Kurulum (Otomatik)
+```bash
+# Setup script'ini çalıştırın
+./setup-deployment.sh
+```
+
+#### Manuel Kurulum
+```bash
+# Git repository'sini başlatın
+git init
+git add .
+git commit -m "Initial commit"
+
+# GitHub'a yükleyin
+git remote add origin https://github.com/username/mzd-kebap-website.git
+git push -u origin main
+```
+
+Detaylı kılavuz için: **[RENDER_DEPLOYMENT_GUIDE.md](RENDER_DEPLOYMENT_GUIDE.md)**
 
 ## Assetler için Hazırlık
 
